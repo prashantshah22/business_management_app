@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/video_player.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="script/video_playing.js" defer></script>
+    <script src="script/video_player.js" defer></script>
+    <script src="script/video_player_miniwindow.js" defer></script>
+    <title>Video Player</title>
+  </head>
+  <body>
+    <div id="main_div">
+      <div id="header-div">
+        <h1 id="header-div_h1">Video Player</h1>
+        <i class="fa fa-share" id="fa-share" aria-hidden="true"></i>
+        <i class="fa fa-thumbs-o-down" id="fa-dislike" aria-hidden="true"></i>
+        <i class="fa fa-thumbs-o-up" id="fa-like" aria-hidden="true"></i>
+      </div>
+      <div id="video_player_div">
+        <input type="file" accept="video/*" id="file_upload">
+        <label for="file_upload" id="file_upload_label">
+          <i class="fa fa-upload" aria-hidden="true" id="fa_upload"></i>
+        </label>
+        <!-- <video oncontextmenu="return false" id="video_player"> -->
+        <video  id="video_player">
+          <source  id="video_src"/>
+        </video>
+      </div>
+      <div id="video_playlist_div">
+        <h1>Favourite Songs</h1>
+      </div>
+      <div id="footer-div">
+        <i class="fa fa-stop-circle" id="fa-stop" title="stop" aria-hidden="true"></i>
+        <i class="fa fa-backward" id="fa-backward" title="Prev" aria-hidden="true"></i>
+        <i class="fa fa-play" id="fa-play" title="play" aria-hidden="true"></i>
+        <i class="fa fa-forward"  id="fa-forward" title="Next" aria-hidden="true"></i>
+        <i class="fa fa-repeat" id="fa-repeat" title="replay" aria-hidden="true"></i>
+        <div id="progress_bar">
+          <div id="buffer_progress"></div>
+          <div id="progress"></div>
+        </div>
+        <div id="video_controls">
+          <ul>
+            <li class="video_controls_default">
+              <p>Speed : <span id="show_speed">1</span></p><button id="reset_speed">Reset</button>
+            </li>
+            <li><input type="range" name="" max="2" min="0.25" value="1" step="0.25" id="speed_selector"></li>
+            <li id="miniplayer_div">
+              <i class="fa fa-clone" aria-hidden="true" id="miniplayer_fa"></i> <span id="miniplayer_span">Mini Player</span>
+            </li>
+            <li id="container_theme_div" >
+              <input type="color" name="" id="container_theme_input"> <span id="container_theme_span">Container theme</span>
+            </li>
+            <li id="icon_theme_div">
+            <input type="color" name="" id="icon_theme_input" value="#dddddd"><span id="icon_theme_span">Icon Theme</span>
+          </li>
+          <li id="text_theme_div">
+            <input type="color" name="" id="text_theme_input" value="#aaaaaa"><span id="text_theme_span">Text Theme</span>
+          </li>
+          <li><button type="reset" id="reset_button">Reset Theme</button></li>
+          </ul>
+        </div>
+        <i class="fa fa-cog" id="fa-setting" title="Video Quallty" aria-hidden="true"></i>
+        <i class="fa fa-volume-up" id="fa-volume"  aria-hidden="true">
+          <input type="range"  max="1" min="0" step="0.1"  value="1" id="volume_control">
+        </i>
+        <i class="fa fa-download" id="fa-download" title="Download" aria-hidden="true"></i>
+        <i class="fa fa-arrows-alt" id="fa-fullscreen" title="Full Screen" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div id="mini_video_player">
+      <i class="fa fa-close" id="fa-close" aria-hidden="true"></i>
+      <div id="mini_video_player_div">
+        <video id="mini_video_player_video" >
+          <source   id="mini_video_src"/>
+        </video>
+        <h2 id="mini_video_name">Intro To HTML</h2>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 
+ -->

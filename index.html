@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/animate.css">
+    <link href="https://fonts.cdnfonts.com/css/beer-cape-g" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script/script.js" defer></script>
+    <script src="script/cookie_cheker.js" defer ></script>
+    <script src="script/sign_log.js" defer></script>
+    <title>Business Solution</title>
+</head>
+<body>
+    <div id="webPpage">
+        <div class="center_div">
+            <img src="images/logo.png" alt="logo">
+            <h1>Safe_docs</h1>
+            <i class="fa fa-play-circle-o  animated infinite swing" aria-hidden="true" id="fa_play"></i>
+        </div>
+        <div class="left_side" style="animation: 0.3s forwards sidebar;">
+            <br>
+            <i class="fa fa-window-close" aria-hidden="true" id="left_side_close_fa"></i>
+                <h1 align="center" style="color:white;">LogIn User!</h1>
+                <br>
+                <form action="" id="login_form">
+                    <input type="text" name="username" id="log_usrname" placeholder="&#xf0e0; E-Mail" required>
+                    <br><br>
+                    <input type="password" name="password" id="log_password" placeholder="&#xf023; Password" required>
+                    <br><br>
+                    <input type="submit" value="Log In">
+                </form>
+            <br><br><br><br>
+                <h1 align="center" style="color:white;">SignUp User!</h1>
+                <br>
+                <form action="" id="signup_form">
+                    <input type="text" name="username" id="sign_usrname" placeholder="&#xf2bd; UserName" required>
+                    <br><br>
+                    <input type="email" name="email" id="sign_email" class="animated" placeholder="&#xf0e0; E-Mail" required>
+                    <h1 id="userExist" style="color:white; font-size:18px; display:none; padding:0;margin:0;"></h1>
+                    <br><br>
+                    <input type="password" name="password" id="sign_password" class="animated " placeholder="&#xf023; Password" required>
+                    <h1 id="passhint" style="color:white;display: none; font-size: 18px;"> please Enter at least 8 characters including at least one uppercase letter, one lowercase letter, one number and one special character</h1>
+                    <br><br>
+                    <input type="tel" name="mobile" id="sign_tel" placeholder="&#xf10b; Mobile Number" required>
+                    <br><br>
+                    <h1 id="signin" style="color:white; font-size: 20px;"></h1>
+                    <input type="submit" value="Sign In" id="submit">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

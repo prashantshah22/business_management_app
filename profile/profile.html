@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/profile_style.css" />
+    <link rel="stylesheet" href="style/profile_app_content.css">
+    <script src="script/welcome.js" defer></script>
+    <script src="script/profile_next.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>Profile</title>
+  </head>
+  <body>
+    <div id="body_div">
+    <div class="center_div">
+      <img src="../images/logo.png" alt="logo" id="center_div_img" />
+      <h1 id="center_div_h">Safe_docs</h1>
+      <input type="file" name="file_upload" id="dp" accept="image/*" />
+      <h1 id="p_name"></h1>
+      <label for="dp" id="dp_label"></label>
+      <i class="fa fa-forward" aria-hidden="true" id="fa_forward"></i>
+    </div>
+  </div>
+  <div id="app_content">
+    <header>
+      <h1 id="nameFromLocalStorage" align="center"></h1>
+      <div id="logo"></div>
+    </header>
+    <section id="section">
+      <i class="fa fa-briefcase" aria-hidden="true" id="business"><span>Business</span></i> 
+      <i class="fa fa-pencil" aria-hidden="true"><span>Notes</span></i>
+      <i class="fa fa-phone" aria-hidden="true" id="contacts"><span>Contact</span></i>
+      <i class="fa fa-play" aria-hidden="true" id="video_player"><span>PlayList</span></i>
+      <i class="fa fa-sign-out" aria-hidden="true" id="logout"><span>Log Out</span></i>
+    </section>
+    <footer id="footer">
+      <img src="../images/logo.png" alt="" id="img">
+      <h1 align="center">Safe_docs</h1>
+    </footer>
+  </div>
+  </body>
+</html>

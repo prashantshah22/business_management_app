@@ -1,0 +1,278 @@
+@import url("https://fonts.cdnfonts.com/css/beer-cape-g");
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#main{
+    width:100%;
+    /* height:100%; */
+    height:auto;
+}
+
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 61px solid transparent;
+	border-left: 61px solid #ff7466;
+	border-bottom: 61px solid transparent;
+	rotate: 225deg;
+	position: fixed;
+    z-index: 99;
+	top: -40px;
+	left: -9px;
+}
+#dp{
+    width:100px;
+    height:100px;
+    border-radius: 100px;
+    border:1px solid #ccc;
+    box-shadow: 10px 10px 10px rgb(100, 92, 92);;
+    position: fixed;
+    z-index: 100;
+    top:5px;
+    left:5px;
+}
+#contact_h1{
+    font-size: 40px;
+    color:aqua;
+    margin-top: 2%;
+}
+#contact_div{
+    width:300px;
+    height:300px;
+    border:4px solid #ff7466;
+    border-top:none;
+    border-right: none;
+    margin-left: 35%;
+    padding-left:3%;
+}
+#fa_plus{
+    position:absolute;
+    left:33.5%;
+    font-size: 50px;
+    color: #ff7466;
+    top:4.5%;
+}
+#name,#pnum,#snum{
+    width:100%;
+    height:50px;
+    margin-top:8%;
+    padding: 9%;
+    border:1px solid aqua;
+    border-left:5px groove aqua;
+    
+    box-shadow: 5px 5px 10px #aaa;
+}
+input:focus{
+    outline: none;
+}
+#contact_div button{
+    width:100px;
+    height:50px;
+    background-color: aqua;
+    color:white;
+    position:relative;
+    top:18px;
+    left:145px;
+    box-shadow: 5px 5px 10px #aaa;
+    font-size: 25px;
+    font-weight: 700;
+    border:none;
+    cursor: pointer;
+}
+#contact_list_div{
+    width:360px;
+    height:100vh;
+    background-color: rgb(18, 215, 237);
+    padding:10px;
+    padding-left: 30px;
+    position:absolute;
+    right:0;
+    top:0;
+    overflow-y: scroll;
+}
+#inside_contacts{
+    width:100%;
+    height:auto;
+}
+#contact_list_div h1{
+    color:rgb(255, 238, 3);
+    font-family: "Beer Cape__G", sans-serif;
+}
+#search{
+    width:100%;
+    height:40px;
+    font-size: 20px;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: rgb(219, 2, 24);
+}
+#search:focus{
+    color: rgb(0, 247, 255);
+}
+
+fieldset{
+    width: 100%;
+    height:95px;
+    padding:10px;
+    border: 4px groove rgb(4, 137, 239);
+    margin-bottom:5px;
+
+}
+fieldset:hover{
+    border: 4px groove rgb(31, 4, 239);
+    background-color: #25f500;
+}
+legend{
+    color:rgb(4, 137, 239);
+    font-size: 20px;
+    font-weight: 900;
+}
+ol{
+    width:100%;
+    list-style: none;
+    height:100%;
+    padding-left:20px;
+}
+li{
+    color:rgb(24, 2, 227);
+    font-size: 20px;
+    font-family:  'Times New Roman', Times, serif;
+    margin-bottom: 10px;
+    width:150px;
+}
+#trash{
+    position: relative;
+    left:245px;
+    top:-40px;
+    color:rgb(255, 106, 0);
+    font-size: 25px;
+    cursor: pointer;
+}
+#trash:hover{
+    color:rgb(218, 0, 0);
+
+}
+#edit{
+    position: relative;
+    left:190px;
+    top:-38px;
+    color:rgba(12, 0, 245, 0.86);
+    font-size: 25px;
+    cursor: pointer;
+}
+#edit:hover{
+    color:rgba(100, 0, 225, 1);
+
+}
+#save{
+    position: relative;
+    left:128px;
+    top:-40px;
+    color:rgb(255, 255, 0);
+    font-size: 25px;
+    cursor: pointer;
+    visibility: hidden;
+}
+#saved{
+    color:white;
+    font-size: 18px;
+    height:100px;
+    width:100px;
+    color: red;
+    font-weight: 900;
+    position:relative;
+    top:-40px;
+    left:40px;
+    visibility: hidden;
+}
+#bottom{
+    width:360px;
+    height:20px;
+    background-color: whitesmoke;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+#delete_btn{
+    float:left;
+}
+#edit_btn{
+    float:right;
+}
+#logout_btn{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+    float:left;
+    width:49%;
+}
+#logout_fa{
+    margin-right: 5px;
+}
+#restore_btn{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+    float:right;
+    width:49%;
+    border-left:1px solid #ccc;
+}
+#restore_fa{
+    margin-right: 5px;
+}
+#hidden{
+    width:984px;
+    height:0;
+    display: none;
+    background-color: white;
+    position: absolute;
+    left:0;
+    bottom:0;
+    animation:slide 1s 1;
+
+}
+@keyframes slide{
+    0%{
+        height:0;
+    }
+    100%{
+        height:100vh;
+    }
+}
+
+#hidden h1{
+    font-size: 40px;
+    font-family: "Beer Cape__G", sans-serif;
+    margin-top: 5%;;
+}
+
+#hidden table{
+    width:65%;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    color:rgb(0, 8, 226);
+    font-size: 20px;
+
+}
+#hidden table th{
+    border: 1px solid #aaa;
+    
+}
+#close_fa{
+    position:absolute;
+    top:5%;
+    right:5%;
+    font-size: 30px;
+    color:#ff7466;
+    cursor: pointer;
+}
+#hidden .fa-refresh{
+    color:#ff7466;
+    cursor: pointer;
+    
+}

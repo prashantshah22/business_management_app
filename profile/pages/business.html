@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts</title>
+  <link rel="stylesheet" href="style/business.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../../style/animate.css" />
+  <script src="script/business.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="triangle-right"></div>
+    <div id="dp"></div>
+    <h1 align="center">Business Management Software</h1>
+    <h3 align="center">
+      Manage all your business details like:Ledger, Voucher, Tax, BalanceSheet
+      and many more...
+    </h3>
+  </header>
+  <section>
+    <div id="comapny">
+      <div id="creatcompany">
+        <div id="visible_crt_cmpny">
+          <i class="fa fa-home" id="fa_home" aria-hidden="true"></i>
+          <button type="button">Create Company</button>
+        </div>
+        <div id="form_for_creat_company">
+          <form action="" id="creat_company_form">
+            <input type="text" name="company_name" id="company_name" placeholder="Company Name" required/>
+            <input type="text" name="mailing_name" id="mailing_name" placeholder="companyname.pvt.ltd / company.govt.ltd" required />
+            <textarea name="address" placeholder="address" id="address" required></textarea>
+            <input type="tel" name="mobile" id="mobile" placeholder="Mobile Number" required />
+            <input type="tel" name="fax" id="fax" placeholder="Fax Number" />
+            <input type="email" name="email" id="email" placeholder="Email" required />
+            <input type="text" name="website" id="website" placeholder="Website" />
+            <span>Financial Year</span>
+            <input type="date" name="fin_year" id="fin_year" placeholder="Financial Year" required />
+            <span>Stock Type</span>
+            <select name="stock_type" id="stock_type" required>
+              <option value="accounts Only">Accounts Only</option>
+              <option value="accounts with inventry">
+                Accounts with inventry
+              </option>
+            </select>
+            <input type="submit" value="Creat Now" id="submit_company_form" />
+          </form>
+        </div>
+      </div>
+      <div id="delete_cmpny">
+        <i class="fa fa-trash" id="fa_home" aria-hidden="true"></i>
+        <button type="button">Delete</button>
+      </div>
+      <div id="log_out">
+        <i class="fa fa-sign-out" id="fa_home" aria-hidden="true"></i>
+        <button type="button">Log Out</button>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

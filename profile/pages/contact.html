@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script/contact.js" defer></script>
+</head>
+<body >
+<div class="triangle-right"></div>
+<div id="dp"></div>
+<section>
+    <div id="main">
+        <h1 align="center" id="contact_h1">Contacts</h1>
+        <i class="fa fa-plus-circle" aria-hidden="true" id="fa_plus"></i>
+        <div id="contact_div">
+            <form action="" id="form">
+                <input type="text" name="" id="name" placeholder="Name"><br>
+                <input type="tel" name="" id="pnum" placeholder="Primary Number"><br>
+                <input type="tel" name="" id="snum" placeholder="Secondary Number"><br>
+                <button id="submit">Add</button>
+            </form>
+        </div>
+
+        <div id="contact_list_div">
+            <h1 align="center" id="contact_list_h">Contact List</h1>
+            <input type="text" name="search" id="search" placeholder="Search Your Contacts">
+            <div id="inside_contacts"></div>
+            <div id="bottom">
+                <button type="button" id="logout_btn">
+                    <i class="fa fa-sign-out" aria-hidden="true" id="logout_fa"></i>Log Out
+                </button>
+                <button type="button" id="restore_btn">
+                    <i class="fa fa-refresh" aria-hidden="true" id="restore_fa"></i>Resotre Contacts
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="hidden">
+        <h1 align="center" id="deleted_h"></h1>
+        <table id="table">
+            <tr>
+                <th>First Name</th>
+                <th>Primary Number</th>
+                <th>Secondary number</th>
+                <th>Restore Now</th>
+            </tr>
+        </table>
+        <i class="fa fa-times-circle" aria-hidden="true" id="close_fa"></i>
+
+
+    </div>
+</section>
+
+</body>
+</html>
+

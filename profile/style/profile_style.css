@@ -1,0 +1,78 @@
+@import url("https://fonts.cdnfonts.com/css/beer-cape-g");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#body_div{
+  width:100%;
+  height:100vh;
+  background-color: black;
+  display: none;
+}
+.center_div {
+  width: 700px;
+  height: 500px;
+  background-color: azure;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+#center_div_img {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-shadow: 10px 10px 10px #ddd;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+
+#center_div_h {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  font-family: "Beer Cape__G", sans-serif;
+  color: #ff7466;
+  font-size: 50px;
+}
+
+#dp {
+  display: none;
+}
+
+#dp_label {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-image: url(../../images/upload_pic.jpg);
+  background-size: cover;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  position: absolute;
+  bottom: 5px;
+  cursor: pointer;
+}
+#fa_forward{
+  color: #ff7466;
+  font-size: 40px;
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  display: none;
+  cursor: pointer;
+}
+#p_name{
+  position: absolute;
+  top:50%;
+  left:40%;
+  color:#ff7466;
+}
