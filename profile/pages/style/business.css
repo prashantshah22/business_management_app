@@ -47,6 +47,18 @@ header h1, header h3{
     overflow: hidden;
 }
 #fa_home{
+    width: 100px;
+    height: 100px;
+    color:#aaa;
+    background-color: blue;
+    font-size: 40px;
+}
+#fa_trash{
+    color:#aaa;
+    background-color: blue;
+    font-size: 40px;
+}
+#fa_sign_out{
     color:#aaa;
     background-color: blue;
     font-size: 40px;

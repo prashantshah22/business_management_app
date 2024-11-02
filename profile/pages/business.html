@@ -24,21 +24,23 @@
   <section>
     <div id="comapny">
       <div id="creatcompany">
+
         <div id="visible_crt_cmpny">
           <i class="fa fa-home" id="fa_home" aria-hidden="true"></i>
-          <button type="button">Create Company</button>
+          <button type="button" id="crt_cmp">Create Company</button>
         </div>
+        <p id="upload_notice" style="color:red;font-size: 20px;font-weight: 700; position: absolute; z-index: 100;"></p>
         <div id="form_for_creat_company">
-          <form action="" id="creat_company_form">
-            <input type="text" name="company_name" id="company_name" placeholder="Company Name" required/>
-            <input type="text" name="mailing_name" id="mailing_name" placeholder="companyname.pvt.ltd / company.govt.ltd" required />
-            <textarea name="address" placeholder="address" id="address" required></textarea>
-            <input type="tel" name="mobile" id="mobile" placeholder="Mobile Number" required />
+          <form action="" id="creat_company_form" autocomplete="off">
+            <input type="text" name="company_name" id="company_name" placeholder="* Company Name" required/>
+            <input type="text" name="mailing_name" id="mailing_name" placeholder="* Company name .pvt.ltd / .gov.ltd" required />
+            <textarea name="address" placeholder="address" id="address" ></textarea>
+            <input type="tel" name="mobile" id="mobile" placeholder="* Mobile Number" required />
             <input type="tel" name="fax" id="fax" placeholder="Fax Number" />
-            <input type="email" name="email" id="email" placeholder="Email" required />
-            <input type="text" name="website" id="website" placeholder="Website" />
+            <input type="email" name="email" id="email" placeholder="* Email" required />
+            <input type="url" name="website" id="website" placeholder="Website" />
             <span>Financial Year</span>
-            <input type="date" name="fin_year" id="fin_year" placeholder="Financial Year" required />
+            <input type="date" name="fin_year" id="fin_year" placeholder="* Financial Year" required />
             <span>Stock Type</span>
             <select name="stock_type" id="stock_type" required>
               <option value="accounts Only">Accounts Only</option>
@@ -51,11 +53,11 @@
         </div>
       </div>
       <div id="delete_cmpny">
-        <i class="fa fa-trash" id="fa_home" aria-hidden="true"></i>
+        <i class="fa fa-trash" id="fa_trash" aria-hidden="true"></i>
         <button type="button">Delete</button>
       </div>
       <div id="log_out">
-        <i class="fa fa-sign-out" id="fa_home" aria-hidden="true"></i>
+        <i class="fa fa-sign-out" id="fa_sign_out" aria-hidden="true"></i>
         <button type="button">Log Out</button>
       </div>
     </div>
