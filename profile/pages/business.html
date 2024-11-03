@@ -24,12 +24,11 @@
   <section>
     <div id="comapny">
       <div id="creatcompany">
-
         <div id="visible_crt_cmpny">
           <i class="fa fa-home" id="fa_home" aria-hidden="true"></i>
           <button type="button" id="crt_cmp">Create Company</button>
         </div>
-        <p id="upload_notice" style="color:red;font-size: 20px;font-weight: 700; position: absolute; z-index: 100;"></p>
+        <p id="upload_notice" ></p>
         <div id="form_for_creat_company">
           <form action="" id="creat_company_form" autocomplete="off">
             <input type="text" name="company_name" id="company_name" placeholder="* Company Name" required/>
@@ -54,11 +53,12 @@
       </div>
       <div id="delete_cmpny">
         <i class="fa fa-trash" id="fa_trash" aria-hidden="true"></i>
-        <button type="button">Delete</button>
+        <button type="button" id="delete_company">Delete</button>
+        <p id="delete_cmpny_conform">Are you sure? <button value="ok" id="ok_bth">Ok</button> <button value="Cancel" id="cancel_button">Cancel</button></p>
       </div>
       <div id="log_out">
         <i class="fa fa-sign-out" id="fa_sign_out" aria-hidden="true"></i>
-        <button type="button">Log Out</button>
+        <button type="button" id="log_out_btn">Log Out</button>
       </div>
     </div>
   </section>

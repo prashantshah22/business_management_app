@@ -2,14 +2,10 @@ function display_profile() {
     var user_mail = sessionStorage.getItem("user_mail");
     var logo = document.getElementById("dp");
     var image_url = localStorage.getItem(`${user_mail}image_url`);
-
      if (image_url != null) {
         logo.style.backgroundImage = `url(${image_url})`;
         logo.style.backgroundSize = "cover";
-      }
-
-
-}
+      }}
 display_profile();
 var btn = document.getElementsByTagName("button");
 const hover_button = () => {
@@ -43,9 +39,10 @@ btn[0].addEventListener("click",(e)=>{
     }
 });
 
-if(localStorage.getItem("Company_details")==null){
+
 var company_name=document.getElementById("company_name");
 company_name.addEventListener("change",(e)=>{
+  if(localStorage.getItem("Company_details")==null){
  var mailing_name=document.getElementById("mailing_name");
   if(!isNaN(e.target.value)){
     e.target.style.borderColor = "red";
@@ -60,9 +57,10 @@ else{
  mailing_name.addEventListener("change",()=>{
   mail_name_validation(e.target , mailing_name);
  })}
-})
+}})
 
 const mail_name_validation=(company_name,mailing_name)=>{
+  if(localStorage.getItem("Company_details")==null){
   if(mailing_name.value===company_name.value){
     mailing_name.value="mailing and company name shouldn't be same";
     mailing_name.style.color="red";
@@ -136,7 +134,7 @@ const mail_name_validation=(company_name,mailing_name)=>{
         }
       }
       else{
-        finyear.type="text";
+        finyear.type="text";visible_crt_cmpny
         finyear.value="Company Name.pvt.ltd or .gov.ltd";
         finyear.style.color="red";
         finyear.style.borderColor = "red";
@@ -160,76 +158,53 @@ const mail_name_validation=(company_name,mailing_name)=>{
     mailing_name.classList.remove("animated", "headShake");
     mailing_name.style.color="inherit";
     mailing_name.value = "";
-    })
+    })}}};
+
+var delete_cmpny=document.getElementById("delete_company");
+delete_cmpny.addEventListener("click",()=>{
+  var delete_notice=document.getElementById("delete_cmpny_conform");
+  var cancel_btn=document.getElementById("cancel_button");
+  var ok_btn=document.getElementById("ok_bth");
+  if(localStorage.getItem("Company_details")!=null){
+    delete_notice.style.visibility="visible";
+    ok_btn.onclick=function(){
+      localStorage.removeItem("Company_details");
+      localStorage.removeItem("logo");
+      window.location=location.href;
+    }
+    cancel_btn.onclick=function(){
+      delete_notice.style.visibility="hidden";
+    }
   }
-};
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  else{
+    delete_notice.style.visibility="visible";
+    delete_notice.innerHTML="Company Not Created";
+    ok_btn.style.visibility="hidden";
+    cancel_btn.style.visibility="hidden";
+    setTimeout(()=>{
+      delete_notice.style.visibility="hidden";
+    },1000)
+  }
+});
+
+document.getElementById("log_out_btn").addEventListener("click",()=>{
+  sessionStorage.clear();
+  window.location.replace("../../index.html");
+});
+
+ var cmpny=document.getElementById("crt_cmp");
+ cmpny.addEventListener("click",()=>{
+  var localstoragedata=localStorage.getItem("Company_details");
+  var local_data=JSON.parse(localstoragedata);
+
+  if(localStorage.getItem("Company_details")!=null&&local_data.stock_type=="accounts Only"){
+    window.location.assign("/businessAssets/accounts_only.html");
+  }
+  else if(localStorage.getItem("Company_details")!=null&&local_data.stock_type=="accounts with inventry"){
+
+    window.location.assign("/businessAssets/accounts_with_inventry.html");
+  }
+ });
 
 const check_company=()=>{
   if(localStorage.getItem("Company_details")!=null){
@@ -255,13 +230,13 @@ const check_company=()=>{
     input.addEventListener("change",(e)=>{
       upload_logo(e.target);
     })
-   }
-  }
-}
+   }}};
+
 check_company();
 const upload_logo=(env)=>{
   if(env.files[0].size>512000){
     var warning=document.getElementById("upload_notice");
+    warning.style.display="block";
      warning.classList.add("fa","fa-warning");
      warning.innerHTML="Maximum Size :512 KB"
      var warning=document.getElementById("upload_notice");
@@ -271,14 +246,14 @@ const upload_logo=(env)=>{
      reader.readAsDataURL(env.files[0])
      reader.onload=function(){
       localStorage.setItem("logo",reader.result)
-     }
-   }
-};
+      window.location=location.href;
+     }}};
 const show_logo=()=>{
 if(localStorage.getItem("logo")!=null){
   var fa_home=document.getElementById("fa_home");
   fa_home.style.backgroundImage=`url(${localStorage.getItem("logo")})`;
   fa_home.style.backgroundSize="40px 40px";
+  fa_home.style.backgroundRepeat="no-repeat";
   fa_home.style.backgroundColor="transparent";
   fa_home.className="fa ";}};
 show_logo();
