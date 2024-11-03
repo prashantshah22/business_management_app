@@ -198,11 +198,11 @@ document.getElementById("log_out_btn").addEventListener("click",()=>{
   var local_data=JSON.parse(localstoragedata);
 
   if(localStorage.getItem("Company_details")!=null&&local_data.stock_type=="accounts Only"){
-    window.location.assign("/businessAssets/accounts_only.html");
+    window.location.assign("/profile/pages/businessAssets/accounts_only.html");
   }
   else if(localStorage.getItem("Company_details")!=null&&local_data.stock_type=="accounts with inventry"){
 
-    window.location.assign("/businessAssets/accounts_with_inventry.html");
+    window.location.assign("/profile/pages/businessAssets/accounts_with_inventry.html");
   }
  });
 
