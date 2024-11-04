@@ -246,19 +246,22 @@ table {
 #tittle_tr{
   background-color: #502b2b;
 }
-#tittle_input{
+.tittle_input{
   background-color: whitesmoke;
   color: black;
   border: 1px solid black;
 }
 
-#tittle_input th,#tittle_tr th{
+.tittle_input th,.tittle_tr th{
   border: 1px solid black;
 }
-#price_inpt,#desc_inpt,#qty_inpt,#amt_inpt{
+.price_inpt,.desc_inpt,.qty_inpt,.amt_inpt{
   width:140px;
   height:35px;
   text-align: center;
+}
+#del{
+  cursor: pointer;
 }
 #des,#price,#qty,#amt{
   text-align: center;

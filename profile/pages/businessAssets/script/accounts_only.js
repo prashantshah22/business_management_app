@@ -98,38 +98,69 @@ function add_item(){
   add_btn.onclick=()=>{
     var table=document.getElementById("bill_fill_table");
     var trc=document.createElement("tr");
-    trc.setAttribute("id","tittle_input");
+    trc.setAttribute("class","tittle_input");
     table.appendChild(trc);
     var tha=document.createElement("th");
     var inpta=document.createElement("input");
     tha.appendChild(inpta);
     trc.appendChild(tha);
-    inpta.setAttribute("id","desc_inpt");
+    inpta.setAttribute("class","desc_inpt");
     inpta.setAttribute("type","text");
     var thb=document.createElement("th");
     var inptb=document.createElement("input");
     trc.appendChild(thb);
     thb.appendChild(inptb);
-    inptb.setAttribute("id","price_inpt");
+    inptb.setAttribute("class","price_inpt");
     inptb.setAttribute("type","number");
+    inptb.disabled=true;
     var thc=document.createElement("th");
     var inptc=document.createElement("input");
-    inptc.setAttribute("id","qty_inpt");
+    inptc.setAttribute("class","qty_inpt");
     inptc.setAttribute("type","number");
+    inptc.disabled=true;
     trc.appendChild(thc);
     thc.appendChild(inptc);
     var thd=document.createElement("th");
     var inptd=document.createElement("input");
-    inptd.setAttribute("id","amt_inpt");
+    inptd.setAttribute("class","amt_inpt");
     inptd.setAttribute("type","number");
     trc.appendChild(thd);
     thd.appendChild(inptd);
     var the=document.createElement("th");
-    var inpte=document.createElement("i");
-    inpte.setAttribute("class","fa fa-trash-o");
-    inpte.setAttribute("aria-hidden","true");
+    var del_icon=document.createElement("i");
+    del_icon.setAttribute("id","del");
+    del_icon.setAttribute("class","fa fa-trash-o");
+    del_icon.setAttribute("aria-hidden","true");
     trc.appendChild(the);
-    the.appendChild(inpte);
+    the.appendChild(del_icon);
+    del_icon.onclick=function(){
+      var del_icon_td=this.parentElement.parentElement;
+      del_icon_td.remove();
+    }
+    inptd.addEventListener("keydown",(event)=>{
+      event.preventDefault();
+    });
+    inptd.addEventListener("contextmenu",(event)=>{
+      event.preventDefault();
+    });
+
+    inpta.oninput=function(){
+      inptb.disabled=false;
+      inptb.oninput=function(){
+        inptc.disabled=false;
+        inptc.oninput=function amt_cal(){
+          var sub_total=document.getElementById("sub_total");
+           var amt=document.getElementsByClassName("amt_inpt");
+           inptd.value=inptb.value*inptc.value;
+           let prevamt=0;
+          for(let i=0;i<amt.length;i++){
+            prevamt+=Number(amt[i].value);
+            sub_total.innerHTML=prevamt;
+          }
+        }
+      }
+    }
+
   }
 }
 add_item();
