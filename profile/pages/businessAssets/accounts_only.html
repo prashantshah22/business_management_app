@@ -25,13 +25,116 @@
     <div id="logo_div"></div>
     <div id="name_div"></div>
     <div id="comapny">
-        <div id="measurement"><i class="fa fa-balance-scale" aria-hidden="true"></i><button>Unit of Measurement</button></div>
-        <div id="sales"><i class="fa fa-money" aria-hidden="true"></i><button>Sales Voucher</button></div>
-        <div id="shut_down"><i class="fa fa-window-close" aria-hidden="true"></i><button>Shut Down</button></div>
+        <button id="measurement_btn">
+          <div id="measurement">
+          <i class="fa fa-balance-scale" aria-hidden="true" id="fa-balance-scale"></i>
+          <span>Measurement Unit</span>
+        </div>
+          <div id="measure_click">
+            <!-- <form action="" id="measure_form"> -->
+              <form id="form" >
+              <i class="fa fa-window-close" aria-hidden="true" id="measure_close"></i>
+              <input type="text" placeholder="Symbol" id="symbol">
+              <input type="text" placeholder="Formal Name" id="fullname">
+              <input type="submit" value="Set">
+            </form>
+        </div>
+      
+  </button>
+        <button id="sales_btn">
+        <div id="sales"><i class="fa fa-money" aria-hidden="true"></i><span>Sales Voucher</span></div>
+        </button>
+
+        <button id="shut_down_btn"> 
+        <div id="shut_down"><i class="fa fa-window-close" aria-hidden="true"></i><span>Shut Down</span></div>
+      </button>
     </div>
-
-
+     <!-- hidden div -->
+    <div id="bill">
+      <table>
+        <tr>
+          <td id="close_button_td">
+            <button id="close_button">
+              <i class="fa fa-window-close" aria-hidden="true"></i>
+              Close Invoice</button>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr id="voucher_des_tr">
+          <td>Sales Voucher <span></span></td>
+          <td>Date <span></span></td>
+        </tr>
+        <tr>
+          <td id="cmpny_details"></td>
+          <td id="cmpny_logo"></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+        <tr>
+          <td>
+            Name: <br>
+            <input type="text" id="name"> <br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            EMail: <br>
+            <input type="email" id="mail"> <br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Address: <br>
+            <input type="text" name="address" id="address"> <br>
+          </td>
+        </tr>
+        </tr>
+      </table>
+      <table id="bill_fill_table">
+        <tr id="tittle_tr">
+          <th border="1px" id="des">Description</th>
+          <th id="price">Price</th>
+          <th id="qty">Qty</th>
+          <th id="amt">Amount</th>
+          <th id="tax">Del</th>
+        </tr>
+        <tr id="tittle_input">
+          <th><input type="text" name="" id="desc_inpt"></th>
+          <th><input type="number" name="" id="price_inpt"></th>
+          <th><input type="number" name="" id="qty_inpt"></th>
+          <th><input type="number" name="" id="amt_inpt"></th>
+          <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
+        </tr>
+      </table>
+      <table>
+        <td>
+          <button id="add_item"><i class="fa fa-plus" aria-hidden="true"></i> Add Item</button>
+        </td>
+      </table>
+      <table id="ftr_tbl">
+        <tr>
+          <th></th>
+          <th>Sub Total: </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>Tax </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>Total:</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>Balance Due: </th>
+        </tr>
+      </table>
+    </div>
   </section>
+
+  
 </body>
 
 </html>
