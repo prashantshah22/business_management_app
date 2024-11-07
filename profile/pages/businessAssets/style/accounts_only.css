@@ -66,7 +66,7 @@ section {
 #comapny {
   float: left;
   width: 300px;
-  height: 300px;
+  height: 320px;
   padding: 20px;
   overflow: hidden;
   border-top: 10px groove rgb(18, 139, 231);
@@ -74,7 +74,7 @@ section {
   box-shadow: 5px 5px 10px #aaa;
 }
 #measurement,
-#sales,
+#sales,#tax_div,
 #shut_down {
   width: 100%;
   box-shadow: 0px 0px 5px #aaa;
@@ -85,7 +85,7 @@ section {
   box-shadow: 0px 0px 5px #aaa;
   cursor: pointer;
 }
-#measurement > span,
+#measurement > span, #tax_div >span,
 #sales > span,
 #shut_down > span {
   width: 160px;
@@ -102,7 +102,7 @@ section {
   padding-top: 10px;
 }
 #measurement_btn,
-#sales_btn,
+#sales_btn,#tax_btn,
 #shut_down_btn {
   width: 100%;
   border: none;
@@ -110,10 +110,10 @@ section {
   background-color: inherit;
   font-size: 15px;
   font-weight: 900;
-  margin-top: 20px;
+  margin-top: 5px;
   padding: 5px;
 }
-#sales i,
+#sales i,#tax_div i,
 #shut_down i,
 #fa-balance-scale {
   width: 50px;
@@ -130,7 +130,7 @@ section {
   float: left;
 }
 #measurement:hover,
-#sales:hover,
+#sales:hover,#tax_div:hover,
 #shut_down:hover {
   background-color: red;
   color: white;
@@ -143,16 +143,53 @@ section {
   background-color: rgba(0, 0, 0, 0.86);
   display: none;
 }
+#tax_hidden_div{
+  width: 250px;
+  padding: 10px;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.86);
+  animation: tax_up 1s 1;
+  position:absolute;
+  z-index: 100;
+  display: none;
+}
+@keyframes tax_up {
+  0%{
+    height:0;
+  }
+  100%{
+    height: 150px;
+  }
+}
+@keyframes tax_down {
+  0%{
+    height: 150px;
+  }
+  100%{
+    height: 0;
+  } 
+}
+#tax_close_fa{
+  float: right;
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+}
+#tax_close_fa:hover{
+  color:rgb(72, 179, 1);
+  
+}
 #measure_from {
   width: 100%;
 }
-#measure_click > form > input[type="text"] {
+#measure_click > form > input[type="text"],#tax_hidden_div > form > input[type="text"] {
   width: 100%;
   height: 40px;
   margin-top: 10px;
   padding: 15px;
 }
-#measure_click > form > input[type="submit"] {
+
+#measure_click > form > input[type="submit"],#tax_hidden_div>form>input[type=submit] {
   width: 100%;
   height: 40px;
   margin-top: 10px;
@@ -161,7 +198,7 @@ section {
   font-size: 20px;
   font-weight: 900;
 }
-#measure_click > form > input:focus {
+#measure_click > form > input:focus,#tax_hidden_div>form>input:focus {
   outline: none;
 }
 #measure_close {
@@ -174,6 +211,10 @@ section {
   color: red;
   cursor: pointer;
 }
+form{
+  color:black;
+  font-weight: 900;
+}
 *{
   padding: 0;
   margin: 0;
@@ -182,14 +223,16 @@ section {
 #bill{
   position: absolute; 
   border-radius: 10px;
-  max-height:500px;
+  width:700px;
+  height:600px;
+  padding:10px;
   z-index: 1000;
-  width:650px;
   top:20px;
   overflow-y:scroll;
-  background-color:#9a8c8c;
-  box-shadow: 0 0 10px rgba(68, 223, 179, 0.823);
-  color: white;
+  overflow-x: hidden;
+  background-color: white;
+  box-shadow: 0 0 10px gray;
+  /* color: red; */
   animation: down 1s 1;
   display: none;
 }
@@ -225,42 +268,43 @@ table {
   height:20px;
 }
 #voucher_des_tr{
-  background-color: #502b2b;
+  background-color: black;
+  color:white;
 }
 #cmpny_details{
-  width:85%;
   height:100px;
-  background-color: yellow;
-  color: #9a8c8c;
+  color:black;
   padding-left: 10px;
 }
-#cmpny_logo{
-  width: 15%;
+#cmpny_logo_td{
   height:100px;
-  background-color: aquamarine;
+  background-color: white
 }
-#name,#mail,#address{
+#name,#mail,#address,#phone{
   width:100%;
   height: 30px;
+  margin-bottom: 5px;
+}
+#bill_fill_table{
+  margin-bottom: 5px;
 }
 #tittle_tr{
-  background-color: #502b2b;
-}
-.tittle_input{
-  background-color: whitesmoke;
-  color: black;
-  border: 1px solid black;
+  background-color: black;
+  color:white;
 }
 
-.tittle_input th,.tittle_tr th{
-  border: 1px solid black;
+.tittle_input{
+  color: black;
+}
+input{
+  font-weight: 700;
 }
 .price_inpt,.desc_inpt,.qty_inpt,.amt_inpt{
-  width:140px;
+  width:100%;
   height:35px;
   text-align: center;
 }
-#del{
+.del{
   cursor: pointer;
 }
 #des,#price,#qty,#amt{
@@ -281,15 +325,68 @@ input:focus{
 #desc_inpt{
   width:120px;
 }
-#ftr_tbl {
+
+#ftr_tbl,#ftr_tbla,#ftr_tblb,#ftr_tblc,#ftr_tbld {
   width:100%;
-  height:100px;
   color: black;
-  background-color: bisque;
+  background-color: white;
+  margin: 1px;
 }
 #ftr_tbl tr th{
-  width:100px;
+  width:150px;
   height:30px;
+  border:none;
   border-right: 1px solid black;
+  text-align: center;
  float: right;
+}
+#ftr_tbla tr td{
+  width:150px;
+  padding-left:10px ;
+  min-height: 20px;
+  font-weight: 900;
+  text-align: center;
+  border:none;
+ float: right;
+}
+#ftr_tblb tr th ,#ftr_tblc tr th,#ftr_tbld tr th{
+  width:150px;
+  height:30px;
+  margin-top: 10px;
+  border:none;
+  border-right: 1px solid black;
+  text-align: center;
+ float: right;
+}
+#paid{
+  width:100%;
+  height:100%;
+  text-align: center;
+}
+#ftr_tblb tr,#ftr_tbla tr,#ftr_tbl tr{
+  height:auto;
+}
+#get_bill{
+  float: right;
+  width:100px;
+  height:40px;
+  margin-right: 10px;
+  background-color: #ff7466;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+}
+#get_bill:hover{
+  background-color: rgb(16, 48, 207);
+  color:#e56253
+}
+#add_item{
+  margin-top: 10px;
+}
+
+@media print {
+  table ,th{
+    border:1px solid black;
+  }
+  
 }
