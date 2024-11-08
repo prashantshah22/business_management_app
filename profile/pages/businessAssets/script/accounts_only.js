@@ -54,7 +54,7 @@ function unit_of_measurement() {
   }
 }
 unit_of_measurement();
-
+var all_voucher_no=1;
 function open_sales() {
   var sales_voucher = document.getElementById("sales_btn");
   var hdn_dv = document.getElementById("bill")
@@ -68,7 +68,25 @@ function open_sales() {
         hdn_dv.style.animationName = "down";
       }, 1000)
     }
-
+    let keys = [];
+    for (let j = 0; j < localStorage.length; j++) {
+      keys.push(localStorage.key(j));
+    }
+    keys.sort();
+    var voucher_no=document.getElementById("voucher_number");
+    for(let j=0;j<keys.length;j++){
+      var local_key=keys[j];
+      if(local_key.match("voucher_no")){
+        var find=local_key.split("_");
+        all_voucher_no=parseInt(find[2]);
+        all_voucher_no++;
+        console.log(j+" n "+local_key);
+        voucher_no.innerHTML="Voucher No: "+all_voucher_no;
+      }
+      else if(local_key.match("voucher_no")==null){
+        voucher_no.innerHTML="Voucher No: "+all_voucher_no;
+      }
+    }
   }
 }
 open_sales();
@@ -104,8 +122,7 @@ function tax_show() {
       var tax_data = localStorage.getItem(tax_name);
       var tax_details = JSON.parse(tax_data);
       var tax_th_value = document.getElementById("tax_th_value");
-      tax_th.innerHTML += tax_details.tax_name + " (" + tax_details.tax_percentage + ") <br><br>";
-      tax_th_value.innerHTML += "<br><br>";
+      tax_th.innerHTML += tax_details.tax_name + " (" + tax_details.tax_percentage + ") <br>";
     }
   }
 
@@ -200,19 +217,19 @@ function add_item() {
             if (tax_name.indexOf("tax") != -1) {
               var tax_data = localStorage.getItem(tax_name);
               var tax_details = JSON.parse(tax_data);
-              reserve += tax_details.tax_percentage + "<br><br>";
+              reserve += tax_details.tax_percentage + "<br>";
               tax_th_value.innerHTML = '<span id="span_percentage" style="display:none">' + reserve.replace(0, "") + '</span>';
             }
           }
           var split_num = document.getElementById("span_percentage").innerHTML;
-          var final_num = split_num.split("%<br><br>");
+          var final_num = split_num.split("%<br>");
           var total = document.getElementById("total")
           var dues = document.getElementById("dues");
           var paid = document.getElementById("paid");
           for (let i = 0; i < final_num.length - 1; i++) {
             var cal = (prevamt * final_num[i]) / 100;
             tax[i]=cal.toFixed(2);
-            tax_th_value.innerHTML += cal.toFixed(2) + "<br><br>";
+            tax_th_value.innerHTML += cal.toFixed(2) + "<br>";
             prevamt += cal;
             total.innerHTML = prevamt.toFixed(2);
             store_total=prevamt.toFixed(2);
@@ -231,12 +248,13 @@ function add_item() {
 }
 add_item();
 
-
+var voucher_date;
 function show_date() {
   var date_show = document.getElementById("date");
   var date = new Date();
   var current_date = date.toLocaleDateString();
   date_show.innerHTML = current_date;
+  voucher_date=current_date;
 };
 show_date();
 function tax_data() {
@@ -400,14 +418,69 @@ function get_bills() {
       store_qty:store_qty,
       store_amt:store_amt,
       store_subtotal:store_subtotal,
-      tax:tax,
+      store_tax:tax,
       store_total:store_total,
       store_paid:store_paid,
-      store_due:store_due
+      store_due:store_due,
+      store_date:voucher_date
     }
     var buyer_details=JSON.stringify(buyer_obj);
-    localStorage.setItem("testfile",buyer_details);
+    localStorage.setItem("voucher_no_"+all_voucher_no,buyer_details);
   }
 
 }
 get_bills();
+
+
+// search vouchervoucher
+function search_voucher(){
+  var search_field=document.getElementById("voucher_search_input");
+  search_field.onkeyup=(e)=>{
+    if(e.keyCode==13){
+      var user_input=`voucher_no_${e.target.value}`;
+      let keys = [];
+      for (let j = 0; j < localStorage.length; j++) {
+        keys.push(localStorage.key(j));
+      }
+      keys.sort();
+      for(let i=0;i<keys.length;i++){
+        var all_key=keys[i];
+        if(all_key===user_input){
+          var buyer_string=localStorage.getItem(all_key);
+          var buyer_details=JSON.parse(buyer_string);
+          document.getElementById("sales_btn").click();
+          document.getElementById("voucher_number").innerHTML=`voucher no: ${e.target.value} `;
+          document.getElementById("name").value=buyer_details.buyer_name;
+          document.getElementById("mail").value=buyer_details.buyer_mail;
+          document.getElementById("address").value=buyer_details.buyer_address;
+          document.getElementById("phone").value=buyer_details.buyer_phone;
+          var itemLength=buyer_details.store_item.length;
+          var item=document.getElementsByClassName("desc_inpt");
+          var price=document.getElementsByClassName("price_inpt");
+          var qty=document.getElementsByClassName("qty_inpt");
+          var amt=document.getElementsByClassName("amt_inpt");
+          for(let i=0;i<itemLength;i++){
+            document.getElementById("add_item").click();
+            item[i].value=buyer_details.store_item[i];
+            price[i].disabled=false;
+            price[i].value=buyer_details.store_price[i];
+            qty[i].disabled=false;
+            qty[i].value=buyer_details.store_qty[i];
+            amt[i].value=buyer_details.store_amt[i];
+          }
+          document.getElementById("sub_total").innerHTML=buyer_details.store_subtotal;
+          var taxLength=buyer_details.store_tax.length;
+          document.getElementById("tax_th_value").innerHTM="";
+          for(let i=0;i<taxLength;i++){
+            document.getElementById("tax_th_value").innerHTML+=buyer_details.store_tax[i]+"<br>";
+          }
+          document.getElementById("total").innerHTML=buyer_details.store_total;
+          document.getElementById("paid").value=buyer_details.store_paid;
+          document.getElementById("dues").innerHTML=buyer_details.store_due;
+
+        }
+      }
+    }
+  }
+}
+search_voucher();

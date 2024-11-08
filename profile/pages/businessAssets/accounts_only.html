@@ -68,8 +68,8 @@
       </button>
         <table>
           <tr id="voucher_des_tr">
-            <td id="voucher_number">Sales Voucher <span></span></td>
-            <td id="date"> </td>
+            <td id="voucher_number" width="75%"></td>
+            <td id="date" > </td>
           </tr>
         </table>
 
@@ -106,7 +106,7 @@
             <button id="add_item"><i class="fa fa-plus" aria-hidden="true"></i> Add Item</button>
           <table id="ftr_tbl" border="1px">
             <tr>
-              <th><span id="sub_total"></span></th>
+              <th id="sub_total"></th>
               <th>Sub Total: </th>
             </tr>
           </table>
@@ -138,7 +138,12 @@
     </div>
   </section>
 
-  
+  <div id="search_voucher">
+      <h1>Manage Voucher</h1>
+      <input type="number" id="voucher_search_input" placeholder="&#xf002; Enter Voucher Number" autocomplete="off">
+      <div id="bottom"></div>
+  </div>
+
 </body>
 
 </html>
