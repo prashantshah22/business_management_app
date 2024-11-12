@@ -80,7 +80,6 @@ function open_sales() {
         var find=local_key.split("_");
         all_voucher_no=parseInt(find[2]);
         all_voucher_no++;
-        console.log(j+" n "+local_key);
         voucher_no.innerHTML="Voucher No: "+all_voucher_no;
       }
       else if(local_key.match("voucher_no")==null){
@@ -448,7 +447,13 @@ function search_voucher(){
         if(all_key===user_input){
           var buyer_string=localStorage.getItem(all_key);
           var buyer_details=JSON.parse(buyer_string);
+          var del_btn=document.getElementById("del_vchr");
           document.getElementById("sales_btn").click();
+          del_btn.style.visibility="visible";
+          del_btn.onclick=()=>{
+            localStorage.removeItem("voucher_no_"+search_field.value);
+            window.location=location.href;
+          }
           document.getElementById("voucher_number").innerHTML=`voucher no: ${e.target.value} `;
           document.getElementById("name").value=buyer_details.buyer_name;
           document.getElementById("mail").value=buyer_details.buyer_mail;
@@ -468,15 +473,59 @@ function search_voucher(){
             qty[i].value=buyer_details.store_qty[i];
             amt[i].value=buyer_details.store_amt[i];
           }
-          document.getElementById("sub_total").innerHTML=buyer_details.store_subtotal;
-          var taxLength=buyer_details.store_tax.length;
-          document.getElementById("tax_th_value").innerHTM="";
-          for(let i=0;i<taxLength;i++){
-            document.getElementById("tax_th_value").innerHTML+=buyer_details.store_tax[i]+"<br>";
-          }
-          document.getElementById("total").innerHTML=buyer_details.store_total;
-          document.getElementById("paid").value=buyer_details.store_paid;
+          // document.getElementById("sub_total").innerHTML=buyer_details.store_subtotal;
+          // var taxLength=buyer_details.store_tax.length;
+          // document.getElementById("tax_th_value").innerHTM="";
+          // for(let i=0;i<taxLength;i++){
+          //   document.getElementById("tax_th_value").innerHTML+=buyer_details.store_tax[i]+"<br>";
+          // }
+          // document.getElementById("total").innerHTML=buyer_details.store_total;
+
+          
+            var sub_total = document.getElementById("sub_total");
+            var amt = document.getElementsByClassName("amt_inpt");
+            // inptd.value = inptb.value * inptc.value;
+            let prevamt = 0;
+            for (let j = 0; j < amt.length; j++) {
+              prevamt += Number(amt[j].value);
+              sub_total.innerHTML = prevamt.toFixed(2);
+              store_subtotal=prevamt.toFixed(2);
+            }
+            var reserve = 0;
+            var tax_th_value = document.getElementById("tax_th_value");
+            for (let j = 0; j < localStorage.length; j++) {
+              var tax_name = localStorage.key(j);
+              if (tax_name.indexOf("tax") != -1) {
+                var tax_data = localStorage.getItem(tax_name);
+                var tax_details = JSON.parse(tax_data);
+                reserve += tax_details.tax_percentage + "<br>";
+                tax_th_value.innerHTML = '<span id="span_percentage" style="display:none">' + reserve.replace(0, "") + '</span>';
+              }
+            }
+            var split_num = document.getElementById("span_percentage").innerHTML;
+            var final_num = split_num.split("%<br>");
+            var total = document.getElementById("total")
+            var dues = document.getElementById("dues");
+            var paid = document.getElementById("paid");
+            for (let j = 0; j < final_num.length - 1; j++) {
+              var cal = (prevamt * final_num[j]) / 100;
+              tax[j]=cal.toFixed(2);
+              tax_th_value.innerHTML += cal.toFixed(2) + "<br>";
+              prevamt += cal;
+              total.innerHTML = prevamt.toFixed(2);
+              store_total=prevamt.toFixed(2);
+              dues.innerHTML = prevamt.toFixed(2);
+            }
+            paid.oninput = () => {
+              store_paid=paid.value;;
+              var left = prevamt - paid.value;
+              dues.innerHTML = left.toFixed(2);
+              store_due=left.toFixed(2);
+            }
+          paid.value=buyer_details.store_paid;
           document.getElementById("dues").innerHTML=buyer_details.store_due;
+          document.getElementById("date").innerHTML=buyer_details.store_date;
+          all_voucher_no=e.target.value;
 
         }
       }
@@ -484,3 +533,22 @@ function search_voucher(){
   }
 }
 search_voucher();
+
+function manage_voucher(){
+  let keys = [];
+  for (let j = 0; j < localStorage.length; j++) {
+    keys.push(localStorage.key(j));
+  }
+  keys.sort();
+  for(let i=0;i<keys.length;i++){
+    var all_key=keys[i];
+    if(all_key.indexOf("voucher_no")!=-1){
+      document.getElementById("search_voucher").style.visibility="visible";
+
+    }
+    else{
+      document.getElementById("search_voucher").style.visibility="hidden";
+    }
+  }
+}
+manage_voucher();

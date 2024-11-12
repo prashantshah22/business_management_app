@@ -266,6 +266,14 @@ table {
   width:100px;
   height:20px;
 }
+#del_vchr{
+  float: left;
+  border-radius: 0;
+  width:auto;
+  height:20px;
+  visibility: hidden;
+  cursor: pointer;
+}
 #voucher_des_tr{
   background-color: black;
   color:white;
@@ -385,13 +393,14 @@ input:focus{
 
 #search_voucher{
   width:300px;
-  height:98vh;
+  height:100vh;
   background-color: #e56253;
   position: absolute;
   right:0;
   top:0;
   padding: 20px;
   text-align: center;
+  visibility: hidden;
 }
 #search_voucher>h1{
   color: White;
