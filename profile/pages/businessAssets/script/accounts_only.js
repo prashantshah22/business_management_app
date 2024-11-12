@@ -473,15 +473,6 @@ function search_voucher(){
             qty[i].value=buyer_details.store_qty[i];
             amt[i].value=buyer_details.store_amt[i];
           }
-          // document.getElementById("sub_total").innerHTML=buyer_details.store_subtotal;
-          // var taxLength=buyer_details.store_tax.length;
-          // document.getElementById("tax_th_value").innerHTM="";
-          // for(let i=0;i<taxLength;i++){
-          //   document.getElementById("tax_th_value").innerHTML+=buyer_details.store_tax[i]+"<br>";
-          // }
-          // document.getElementById("total").innerHTML=buyer_details.store_total;
-
-          
             var sub_total = document.getElementById("sub_total");
             var amt = document.getElementsByClassName("amt_inpt");
             // inptd.value = inptb.value * inptc.value;
