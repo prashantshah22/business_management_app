@@ -543,3 +543,58 @@ function manage_voucher(){
   }
 }
 manage_voucher();
+
+
+const manage_tax=()=>{
+  var select_tax=document.getElementById("tax_select");
+   let all_keys=[];
+   for(let i=0;i<localStorage.length;i++){
+    all_keys.push(localStorage.key(i));
+   }
+    all_keys.sort();
+   for(let i=0;i<all_keys.length;i++){
+    var keys=all_keys[i];
+    if(keys.match("tax")){
+      var options=document.createElement("option");
+      options.append(document.createTextNode(keys));
+      select_tax.appendChild(options);
+    }
+   }
+
+   //open tax menu for edit
+   select_tax.onchange=(e)=>{
+    var reserve=e.target.value;
+    document.getElementById("tax_btn").click();
+    e.target.onclick=()=>{
+      document.getElementById("tax_btn").click();
+    }
+    var tax_string=localStorage.getItem(e.target.value);
+    var tax_details=JSON.parse(tax_string);
+    document.getElementById("tax_name_inpt").value=tax_details.tax_name;
+    document.getElementById("tax_per_inpt").value=tax_details.tax_percentage;
+    var submit_btn=document.getElementById("tax_submit");
+    submit_btn.onclick=()=>{
+      var tax_name=document.getElementById("tax_name_inpt").value;
+      var tax_percentage= document.getElementById("tax_per_inpt").value;
+      if(tax_name==reserve){
+        var tax_data={
+          tax_name:tax_name,
+          tax_percentage:tax_percentage
+        }
+      var tax_details=JSON.stringify(tax_data);
+      localStorage.setItem(tax_name,tax_details);
+    }
+    else{
+      localStorage.removeItem(reserve);
+      var tax_data={
+        tax_name:tax_name,
+        tax_percentage:tax_percentage
+      }
+      var tax_details=JSON.stringify(tax_data);
+      localStorage.setItem(tax_name,tax_details);
+    }
+  }
+
+   }
+}
+manage_tax();
