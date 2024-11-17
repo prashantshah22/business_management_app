@@ -391,7 +391,7 @@ input:focus{
   margin-top: 10px;
 }
 
-#search_voucher{
+#manage_section{
   width:300px;
   height:100vh;
   background-color: #e56253;
@@ -399,6 +399,15 @@ input:focus{
   right:0;
   top:0;
   padding: 20px;
+  text-align: center;
+}
+#search_voucher{
+  width:100%;
+  text-align: center;
+  visibility: hidden;
+}
+#show_tax{
+  width:100%;
   text-align: center;
   visibility: hidden;
 }
@@ -424,7 +433,7 @@ input:focus{
   height: 40px;
   padding-left: 20px;
   color:blue;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   text-transform: uppercase;
 }

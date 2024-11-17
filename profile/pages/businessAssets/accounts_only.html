@@ -42,7 +42,7 @@
       
   </button>
   <button id="tax_btn">
-    <div id="tax_div"><i class="fa fa-calculator" aria-hidden="true"></i><span>Tax</span></div>
+    <div id="tax_div"><i class="fa fa-calculator" aria-hidden="true" id="fa_cal"></i><span>Tax</span></div>
     <div id="tax_hidden_div">
       <form action="" id="tax_form" autocomplete="off">
         <i class="fa fa-close" aria-hidden="true" id="tax_close_fa"></i>
@@ -141,14 +141,18 @@
     </div>
   </section>
 
+<div id="manage_section">
   <div id="search_voucher">
-      <h1>Manage Voucher</h1>
-      <input type="number" id="voucher_search_input" placeholder="&#xf002; Enter Voucher Number" autocomplete="off">
-      <h1>Manage Tax</h1>
-      <select name="" id="tax_select">
-        <option value="">Select Tax</option>
-      </select>
-  </div>
+    <h1>Manage Voucher</h1>
+    <input type="number" id="voucher_search_input" placeholder="&#xf002; Enter Voucher Number" autocomplete="off">
+    </div>
+    <div id="show_tax">
+    <h1>Manage Tax</h1>
+    <select name="" id="tax_select">
+      <option value="">Select Tax</option>
+    </select>
+</div>
+</div>
 
 </body>
 
