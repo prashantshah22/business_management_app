@@ -129,7 +129,7 @@ function tax_show() {
 }
 tax_show();
 
-var store_subtotal, tax = [], store_total, store_paid, store_due, all_voucher_number,tax_qty="";
+var store_subtotal, tax = [],store_total, store_paid, store_due, all_voucher_number,tax_qty="";
 
 function add_item() {
   var add_btn = document.getElementById("add_item");
@@ -191,17 +191,26 @@ function add_item() {
       for(let i=0;i<split_comma.length-1;i++){
         var num=split_comma[i].replace("%","");
         var final_cal=(store_subtotal*num)/100;
+        tax[i]=final_cal;
         document.getElementById("tax_th_value").innerHTML+=final_cal+"<br>";
       }
+
       
+      var all_taxs=0;
+      for(let i=0;i<tax.length;i++){
 
+        all_taxs+=tax[i];
 
-
-
-
-
-
-
+      }
+      store_total=store_subtotal+all_taxs;
+      document.getElementById("total").innerHTML=store_total;
+      store_paid=document.getElementById("paid").value;
+      store_due=store_total-store_paid;
+      document.getElementById("dues").innerHTML=store_due;
+      if(store_total==0){
+        document.getElementById("paid").value="";
+        document.getElementById("dues").innerHTML=0;
+      }
     }
     inpt_amt.addEventListener("keydown", (event) => {
       event.preventDefault();
@@ -558,7 +567,6 @@ function search_voucher() {
             store_subtotal = prevamt.toFixed(2);
           }
           var reserve = 0;
-          // var tax_th_value = document.getElementById("tax_th_value");
           for (let j = 0; j < localStorage.length; j++) {
             var tax_name = localStorage.key(j);
             if (tax_name.indexOf("tax") != -1) {
@@ -603,13 +611,7 @@ function search_voucher() {
       if(pmp==null){
         e.target.innerHTML=buyer_details.store_date;
       }
-    }
-    
-    
-    
-    
-    
-    
+    }   
     }
   }
 }
@@ -696,3 +698,25 @@ const manage_tax = () => {
   }
 }
 manage_tax();
+
+//hiding main section
+window.onload=()=>{
+  hide_main_sec();
+}
+function hide_main_sec(){
+
+  for(let i=0;i<localStorage.length;i++){
+    var all_keys=localStorage.key(i);
+    if(all_keys.match("tax")!=null || all_keys.match("voucher_no")!=null){
+      document.getElementById("manage_section").style.display="block";
+      break;
+    }
+    else{
+      document.getElementById("manage_section").style.display="none";
+    }
+  }
+}
+
+document.getElementById("shut_down").addEventListener("click",()=>{
+  window.location="../business.html";
+})
