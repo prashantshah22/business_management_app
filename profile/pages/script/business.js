@@ -170,6 +170,19 @@ delete_cmpny.addEventListener("click",()=>{
     ok_btn.onclick=function(){
       localStorage.removeItem("Company_details");
       localStorage.removeItem("logo");
+      for(let i=0;i<localStorage.length;i++){
+        var all_keys=localStorage.key(i);
+        if(all_keys.match("tax")){
+          localStorage.removeItem(all_keys);
+        }
+        if(all_keys.match("voucher_no")){
+          localStorage.removeItem(all_keys);
+        }
+        if(all_keys.match("unit_measurement_")){
+          localStorage.removeItem(all_keys);
+        }
+
+      }
       window.location=location.href;
     }
     cancel_btn.onclick=function(){

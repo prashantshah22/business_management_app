@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  header {
+    width: 100%;
+    height: 150px;
+  }
+  header .triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 61px solid transparent;
+    border-left: 61px solid #ff7466;
+    border-bottom: 61px solid transparent;
+    rotate: 225deg;
+    position: fixed;
+    z-index: 99;
+    top: -40px;
+    left: -9px;
+  }
+  header h1,
+  header h2 {
+    margin-top: 15px;
+  }
+  header h3{
+    margin-top: 25px
+  }
+  #dp {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 10px rgb(100, 92, 92);
+    position: fixed;
+    z-index: 100;
+    top: 5px;
+    left: 5px;
+  }
+  #name_div{
+    width: 80%;
+    margin-left:10%;
+    text-align: center;
+  }
+  #sect{
+    width:100%;
+    height: auto;
+    margin:10px;
+  }
+  ul{
+    list-style: none;
+  }
+#ledger_li,#unit_of_measure_li,#voucher_li#stock_li,#voucher_li,
+ #profit_loss_li,#balancesheet_li,#transaction_li,#exit_li,#stock_li
+  {
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border-left: 5px solid blue;
+    border-right: 5px solid black;
+    text-align: center;
+    padding-top: 3%;
+    text-transform: uppercase;
+    text-align:center;
+    float: left;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  #cmpy_logo{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border-left: 5px solid blue;
+    border-right: 5px solid black;
+    text-align: center;
+    padding-top: 3%;
+    text-transform: uppercase;
+    float: left;
+    margin-left: 20px;
+  }
+  #cmpny_name{
+    width:100%;
+    height:50px;
+    background-color: red;;
+  }
