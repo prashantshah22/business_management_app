@@ -42,7 +42,6 @@ function hover(){
     }
 } 
 hover();
-
 function open_html(){
     var ledger=document.getElementById("ledger_li");
     ledger.onclick=function(){
@@ -51,3 +50,27 @@ function open_html(){
 
 }
 open_html();
+const update_default_ledger=()=>{
+var cash_ledger=localStorage.getItem("cash_ledger");
+var profit_loss=localStorage.getItem("profit_loss_ledger");
+if(cash_ledger==null && profit_loss==null){
+    var cash_ledger_objects={
+        ledger_name:"Cash",
+        group:"Cash in hand",
+        balance:"",
+        mode:""
+    }
+    var cash_ledger_details=JSON.stringify(cash_ledger_objects);
+    localStorage.setItem("cash_ledger",cash_ledger_details);
+
+    var pf_ledger_objects={
+        ledger_name:"Profit & loss A/c",
+        group:"Profit & loss A/c",
+        balance:"",
+        mode:""
+    }
+    var pf_ledger_details=JSON.stringify(pf_ledger_objects);
+    localStorage.setItem("profit_loss_ledger",pf_ledger_details);
+}
+}
+update_default_ledger();
