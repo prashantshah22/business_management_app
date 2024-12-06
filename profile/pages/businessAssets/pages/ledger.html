@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/ledger.css">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/dateandtime.js" defer></script>
     <script src="script/ledger.js" defer></script>
     <title>Accounts With Inventory</title>
@@ -103,7 +104,6 @@
                       <td>
                         Search and edit<br>
                         <input type="number" placeholder="Enter ledger no" id="edit-ledger" autocomplete="off">
-      
                       </td>
                     </tr>
                   </table>
@@ -146,8 +146,8 @@
                             <td id="edit-address" contenteditable="true"></td>
                           </tr>
                           <tr>
-                            <td width="160"><button id="save" class="fa fa-save"> Save</button></td>
-                            <td><button id="delete" class="fa fa-trash"> Delete</button></td>
+                            <td width="160" id="td_save"><button id="save" class="fa fa-save"> Save</button></td>
+                            <td id="td_del"><button id="delete" class="fa fa-trash"> Delete</button></td>
                           </tr>
                         </table>
                       </td>
@@ -160,7 +160,7 @@
                     <tr>
                       <td>
                         Search ledgers<br>
-                        <input type="search" placeholder="Enter ledger no" id="search-field">
+                        <input type="search" placeholder="Enter ledger no" id="search-field" autocomplete="off">
                       </td>
                     </tr>
                   </table>

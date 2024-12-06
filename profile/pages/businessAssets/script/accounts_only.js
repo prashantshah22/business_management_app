@@ -33,15 +33,15 @@ function unit_of_measurement() {
     this.style.transition = "1s";
     sec_cntnr.style.display = "block";
     setTimeout(() => {
-      pri_cntnr.style.display = "none";
       sec_cntnr.style.transform = "rotateX(-180deg)";
       sec_cntnr.style.transition = "1s";
+      pri_cntnr.style.display = "none";
       close.onclick = function () {
         unit_btn.className = "animated flipInX";
         unit_btn.innerHTML = '<div id="measurement"><i class="fa fa-balance-scale" aria-hidden="true" id="fa-balance-scale"></i><span>Measurement Unit</span></div>';
         setTimeout(() => {
           window.location = location.href;
-        }, 1000)
+        }, 10)
       }
       form.onsubmit = function () {
         var symbol = document.getElementById("symbol");

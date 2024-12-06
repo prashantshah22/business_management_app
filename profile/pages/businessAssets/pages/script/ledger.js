@@ -147,6 +147,7 @@ const edit_ledger=()=>{
                 document.getElementById("edit-table").style.display="block";
                 document.getElementById("ledger-notice").innerHTML="";
                 var ledger_data=JSON.parse(ledger_obj);
+                if(ledger_data.delete_mod !="active"){
                 document.getElementById("edit-lno").innerHTML=ledger_no.value;
                 document.getElementById("edit-lname").innerHTML=ledger_data.ledger_name;
                 document.getElementById("select-group").style.display="block";
@@ -183,6 +184,33 @@ const edit_ledger=()=>{
                     var update_data=JSON.stringify(update_obj);
                     localStorage.setItem(`ledger_no_${document.getElementById("edit-lno").innerHTML}`,update_data);
                 }
+                document.getElementById("delete").onclick=()=>{
+                    var choice=confirm("Still Want to delete?");
+                   if(choice==true){
+                    var update_obj={
+                        ledger_name:document.getElementById("edit-lname").innerHTML,
+                        group:document.getElementById("select-group").value,
+                        balance:document.getElementById("update_balance").innerHTML,
+                        mode:document.getElementById("current-mode").innerHTML,
+                        mailing_name:document.getElementById("edit-mname").innerHTML,
+                        address:document.getElementById("edit-address").innerHTML,
+                        delete_mod:"active"
+                    }
+                    var update_data=JSON.stringify(update_obj);
+                    localStorage.setItem(`ledger_no_${document.getElementById("edit-lno").innerHTML}`,update_data);
+                    window.location=location.href;
+                   }
+                }
+                }
+                else{
+                    document.getElementById("edit-table").style.display="none";
+                    document.getElementById("ledger-notice").innerHTML=`OOps Ledger is deleted <br><button id="restore" > Restore ledger</button>`;
+                    document.getElementById("restore").onclick=()=>{
+                        var task=localStorage.getItem(`ledger_no_${ledger_no.value}`)
+                        localStorage.setItem(`ledger_no_${ledger_no.value}`,task.replace("active","deactive"));
+                        window.location=location.href;
+                    }
+                }
               }
               else{
                 document.getElementById("edit-table").style.display="none";
@@ -198,3 +226,43 @@ const edit_ledger=()=>{
     }
 }
 edit_ledger();
+
+const search=()=>{
+    var ledger_no=document.getElementById("search-field");
+    ledger_no.onkeyup=(e)=>{
+        if(e.keyCode==13){
+            if(e.target.value.length==0){
+                // return false;
+                e.preventDefault();
+            }
+            else{
+                var ledger_obj=localStorage.getItem("ledger_no_"+ledger_no.value);
+                var ledger_data=JSON.parse(ledger_obj);
+                if(localStorage.getItem("ledger_no_"+ledger_no.value)!=null&& ledger_data.delete_mod !="active"){
+                    document.getElementById("search-table").style.display="block";
+                    document.getElementById("search-notice").innerHTML="";
+                    document.getElementById("s-ln").innerHTML=ledger_no.value;
+                    document.getElementById("s-lname").innerHTML=ledger_data.ledger_name;
+                    document.getElementById("s-group").style.display="block";
+                    document.getElementById("s-group").innerHTML=ledger_data.group; 
+                    document.getElementById("s-mname").innerHTML=ledger_data.mailing_name;
+                    document.getElementById("s-balance").innerHTML=ledger_data.balance+" "+ ledger_data.mode;
+                    document.getElementById("s-address").innerHTML=ledger_data.address; 
+                }
+                else{
+                    document.getElementById("search-notice").innerHTML="<span id='no_ledger_span'> <i class='fa fa-ban'> </i>No any ledger found</span>";
+                    document.getElementById("search-table").style.display="none";
+                }
+            }
+
+        }
+    }
+}
+search();
+
+
+
+
+///////////////////////////////////////
+
+
