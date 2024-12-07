@@ -6,6 +6,13 @@ const tabs=()=>{
         btn[i].onclick=function(){
             for(let j=0;j<hide.length;j++){
                 hide[j].style.display="none";
+                document.getElementById("edit-ledger").value="";
+                document.getElementById("edit-table").style.display="none";
+                document.getElementById("search-field").value="";
+                document.getElementById("search-table").style.display="none";
+            }
+            for(let j=0;j<hide.length;j++){
+                hide[j].style.display="none";
             }
             for(let j=0;j<btn.length;j++){
                 btn[j].classList.remove("active");
@@ -136,6 +143,7 @@ total_Calculation();
 // Edit coding
 const edit_ledger=()=>{
     var ledger_no=document.getElementById("edit-ledger");
+
     ledger_no.onkeyup=(e)=>{
         if(e.keyCode==13){
             if(ledger_no.value.length==0){
@@ -183,6 +191,10 @@ const edit_ledger=()=>{
                     }
                     var update_data=JSON.stringify(update_obj);
                     localStorage.setItem(`ledger_no_${document.getElementById("edit-lno").innerHTML}`,update_data);
+                    setTimeout(()=>{
+                        document.getElementById("edit-ledger").value="";
+                        document.getElementById("edit-table").style.display="none";
+                    },100)
                 }
                 document.getElementById("delete").onclick=()=>{
                     var choice=confirm("Still Want to delete?");

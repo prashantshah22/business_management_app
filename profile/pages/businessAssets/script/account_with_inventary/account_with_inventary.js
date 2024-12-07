@@ -48,6 +48,10 @@ function open_html() {
     ledger.onclick = function () {
         window.location = "../businessAssets/pages/ledger.html"
     }
+    var voucher=document.getElementById("voucher_li");
+    voucher.onclick=()=>{
+        window.location="../businessAssets/pages/voucher.html"
+    }
 
 }
 open_html();
@@ -76,16 +80,24 @@ const update_default_ledger = () => {
 update_default_ledger();
 const show_iframe = () => {
     document.getElementById("unit_of_measure_li").onclick = () => {
-        var show_frame = document.getElementById("frame");
-        show_frame.style.display = "block";
-        show_frame.src = "accounts_only.html#measurement_btn"
-        show_frame.onload = function () {
-            var target = this.contentWindow.document.getElementById("measurement_btn");
-            target.click();
-            target.style.position = "absolute";
-            target.style.top = "10px";
-            target.style.left = "10px";
-            target.style.zIndex = "999";
+        var frame = document.getElementById("frame");
+        frame.style.display = "block";
+        frame.src = "pages/unit_measure.html"
+        frame.onload = function () {
+            var target = this.contentWindow.document.getElementById("comapny");
+            frame.contentWindow.document.getElementById("measure_close").style.display="none";
+            var close=document.createElement("I");
+            close.classList.add("fa","fa-close");
+            close.style.position="absolute";
+            close.style.top="0";
+            close.style.right="10px";
+            close.style.fontSize="30px";
+            target.append(close);
+            close.onclick=()=>{
+                frame.style.display="none";
+                frame.src = "";
+
+            }
         }
     }
 }

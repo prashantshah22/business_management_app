@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+section {
+  width:300px;
+  height:240px;
+}
+#comapny {
+  float: left;
+  width: 300px;
+  height: 236px;
+  padding: 20px;
+  overflow: hidden;
+  border-top: 10px groove rgb(18, 139, 231);
+  border-bottom: 10px ridge rgb(18, 139, 231);
+  box-shadow: 5px 5px 10px #aaa;
+}
+#measurement,#edit_measurement {
+  width: 100%;
+  box-shadow: 0px 0px 5px #aaa;
+  cursor: pointer;
+}
+#measurement>span{
+  width: 100%;
+  display: inline-block;
+  height: 40px;
+  text-align: auto;
+  font-size: 14px;
+  padding-top: 10px;
+}
+#select_meaure,#delete_meaure{
+  width:100%;
+  height:40px;
+  background-color: white;
+  border:none;
+  margin-top:10px;
+  padding-left:20px;  
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px grey;
+  font-size: 15px;
+  font-weight: 700;
+}
+#measurement_btn{
+  width: 100%;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  margin-top: 5px;
+  padding: 5px;
+}
+#measurement:hover,
+#edit_measurement:hover{
+  background-color: red;
+  color: white;
+}
+#measure_click {
+  width: 100%;
+  height: 190px;
+  padding: 10px;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.86);
+  display: none;
+}
+
+#measure_from {
+  width: 100%;
+}
+
+#measure_click>form>input[type="text"]{
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+#measure_click>form>input[type="submit"] {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  padding: 0px;
+  background-color: yellow;
+  font-size: 20px;
+  font-weight: 900;
+}
+#submit_btn{
+  width: 100%;
+  height:40px;
+  margin-top: 10px;
+  padding: 0px;
+  padding-top: 4px;
+  background-color: yellow;
+  font-size: 20px;
+  font-weight: 900;
+  display: none;
+}
+#measure_click>form>input:focus{
+  outline: none;
+}
+
+#measure_close{
+  float: right;
+  font-size: 20px;
+  color: yellowgreen;
+}
+
+#measure_close:hover{
+  color: red;
+  cursor: pointer;
+}
+form {
+  color: black;
+  font-weight: 900;
+}

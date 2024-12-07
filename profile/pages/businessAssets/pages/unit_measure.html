@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style/unit_measure.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../../../style/animate.css" />
+  <script src="script/unit_of_measure.js" defer></script>
+</head>
+
+<body>
+  <section id="section">
+    <div id="comapny">
+        <button id="measurement_btn">
+          <div id="measurement"><span>Add Measurement Unit</span></div>
+          <div id="measure_click">
+              <form id="form" autocomplete="off">
+              <i class="fa fa-window-close" aria-hidden="true" id="measure_close"></i>
+              <input type="text" placeholder="Symbol" id="symbol" >
+              <input type="text" placeholder="Formal Name" id="fullname" >
+              <input type="submit" value="Set" id="submit">
+              <input type="submit" id="submit_btn" value="Change">
+            </form>
+        </div> 
+  </button>
+  <select name="" id="select_meaure">
+    <option>Select Unit Of Measure</option>
+  </select>
+  <select name="" id="delete_meaure">
+    <option>Delete Unit Of Measure</option>
+  </select>
+    </div>
+  </section>
+</body>
+
+</html>
