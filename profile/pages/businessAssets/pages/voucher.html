@@ -25,9 +25,9 @@
             <table width="100%" id="ipt_table">
                 <tr>
                     <td width="15%" class="style">Purchase No:</td>
-                    <td width="55%"></td>
+                    <td width="55%" id="voucher_no"></td>
                     <td width="15%" class="style">Date</td>
-                    <td width="15%"></td>
+                    <td width="15%" id="date_show"></td>
                 </tr>
                 <tr>
                     <td width="15%" class="style">Party Account Name</td>
@@ -51,15 +51,24 @@
                 </tr>
             </table>
             <button id="add_btn">Add item</button>
-            <table width="100%" height="200px" style="margin-top: 20px;">
+            <table width="100%" height="220px" style="margin-top: 20px;">
                 <tr>
                     <td rowspan="5" width="60%">
+                        <fieldset id="supplier_details" >
+                            <legend id="supp_details_legend">Suppliers Details</legend>
+                            <form id="supp_form">
+                            <input type="text" id="supp_name_inpt" required placeholder="Supplier Name" autocomplete="off">
+                            <input type="text" id="supp_no_inpt" required placeholder="Supplier Mobile Number" autocomplete="off">
+                           <textarea name="" id="supp_address" placeholder="Supplier Address" autocomplete="off"></textarea>
+                           <!-- <input type="submit" value="Set Suppliers Details" id="supp_submit"> -->
+                            </form>
+                        </fieldset>
                         <fieldset id="tax_fieldset" >
                             <legend id="tax_legend">Tax setup</legend>
-                            <form action="" id="tax_form">
+                            <form id="tax_form">
                                 <input type="text" id="tax_input" required placeholder="Tax Name" autocomplete="off">
                                 <input type="text" id="tax_per" required placeholder="2%" autocomplete="off">
-                                <input type="submit" value="Set" id="tax_submit">
+                                <input type="submit" value="Set Tax" id="tax_submit">
                             </form>
                         </fieldset>
                     </td>
@@ -83,6 +92,7 @@
                     <td width="20%" style="padding-left: 10px; font-weight: 900; font-size: 20px;" align="left" id="dues"></td>
                 </tr>
             </table>
+            <button type="button" id="save_btn">Store</button>
         </div>
         <div id="sales" class="open">
             welcome to sales

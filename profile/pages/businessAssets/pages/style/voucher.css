@@ -148,7 +148,20 @@ input:focus{
     border:4px solid black;
     height: 200px;
     width:45%;
-    margin-left: 50%;
+    float: left;
+    margin-left: 20px;;
+}
+#supplier_details{
+    border:4px solid black;
+    height: 200px;
+    width:45%;
+    float: left;
+    margin-left: 5%;
+}
+#supp_form{
+    width: 100%;
+    height: 100%;
+    padding:10px;
 }
 #paid_input_td{
     height:100%;
@@ -157,7 +170,7 @@ input:focus{
     height:100%;
     width: 100%;
 }
-#tax_legend{
+#tax_legend,#supp_details_legend{
    margin-left: 20px;
    font-size: 20px;
    font-weight: 900;
@@ -166,7 +179,7 @@ input:focus{
     width:100%;
     padding: 10px;
 }
-#tax_input{
+#tax_input,#supp_name_inpt{
     width:100%;
     height:40px;
     padding-left: 10px;
@@ -177,6 +190,18 @@ input:focus{
     padding-left: 10px;
     margin-top: 20px;
 }
+#supp_no_inpt{
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+    margin-top: 8px;
+}
+#supp_address{
+    width:100%;
+    height:60px;
+    padding-left: 10px;
+    margin-top: 8px;
+}
 #tax_submit{
     width: 100%;
     height:40px;
@@ -185,7 +210,24 @@ input:focus{
     font-weight: 700;
     margin-top: 10px;
 }
+#supp_submit{
+    width: 100%;
+    height:40px;
+    background-color: yellow;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 5px;
+}
 
 #paid_input_td{
     padding: 0;
+}
+#save_btn{
+    float: right;
+    width:200px;
+    margin-top: 5px;
+    height:40px;
+    font-weight: 900;
+    font-size: 20px;
+    background-color: yellowgreen;
 }

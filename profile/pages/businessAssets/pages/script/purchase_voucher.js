@@ -115,6 +115,7 @@ const add_item=()=>{
     sp_input.type="number";
     sp_input.id="sp_input";
     sp_input.placeholder="00.00";
+    sp_input.classList.add("sp_input");
     td_sp.append(sp_input);
     td_per.append(per_input);
     var amt_input=document.createElement("input");
@@ -378,29 +379,30 @@ const arrow_fn=()=>{
                     hint_hover[0].style.color="white";
                     e.target.value=hint_hover[0].innerHTML;
 
-                }
-                
+                }   
             }
         }
         else if(e.keyCode==13){
             sessionStorage.removeItem("count");
+            document.getElementById("purchase_hint").style.display="none";
+            add_item();
         }
     }
-    /////
+    // arrow up
     input.onkeyup=(e)=>{
         if(e.keyCode==38){
             if(sessionStorage.getItem("count")==null){
                 hint_hover[hint_hover.length-1].style.backgroundColor="blue";
-                hint_hover[0].style.color="white";
-                e.target.value=hint_hover[0].innerHTML;
-                sessionStorage.setItem("count",0);
+                hint_hover[hint_hover.length-1].style.color="white";
+                e.target.value=hint_hover[hint_hover.length-1].innerHTML;
+                sessionStorage.setItem("count",hint_hover.length-1);
             }
             else{
                 for(let i=0;i<hint_hover.length;i++){
                     hint_hover[i].style.backgroundColor="white";
                     hint_hover[i].style.color="black";
                 }
-                var current=Number(sessionStorage.getItem("count"))+1;
+                var current=Number(sessionStorage.getItem("count"))-1;
                 if(hint_hover[current]!=undefined){
                     sessionStorage.setItem("count",current)
                     hint_hover[current].style.backgroundColor="blue";
@@ -409,17 +411,116 @@ const arrow_fn=()=>{
                 }
                 else{
                     sessionStorage.removeItem("count");
-                    hint_hover[0].style.backgroundColor="blue";
-                    hint_hover[0].style.color="white";
-                    e.target.value=hint_hover[0].innerHTML;
+                    hint_hover[hint_hover.length-1].style.backgroundColor="blue";
+                    hint_hover[hint_hover.length-1].style.color="white";
+                    e.target.value=hint_hover[hint_hover.length-1].innerHTML;
 
-                }
-                
+                }   
             }
         }
         else if(e.keyCode==13){
             sessionStorage.removeItem("count");
+            document.getElementById("purchase_hint").style.display="none";
+            add_item();
         }
     }
 }
 arrow_fn();
+const show_date=()=>{
+    var date=new Date();
+    var date_td= document.getElementById("date_show");
+    date_td.innerHTML=` <span id="date_span"><strong id="date_span_s">${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}</strong></span>`;
+    var date_span=document.getElementById("date_span");
+    date_span.style.cursor="pointer";
+    date_span.onclick=()=>{
+        date_span.innerHTML="";
+        var input=document.createElement("input");
+        input.type="date";
+        date_td.append(input);
+        input.onblur=(e)=>{
+            e.target.remove();
+            var s_date=new Date(e.target.value);
+            date_span.innerHTML=`<strong id="date_span_s">${s_date.getDate()}/${s_date.getMonth()+1}/${s_date.getFullYear()}</strong>`;
+            
+        }
+    }
+}
+show_date();
+
+const store_voucher=()=>{
+    var store_item=[],store_qty=[],store_rate=[],store_sales_price=[],store_per=[],store_amt=[],store_tax=[];
+    var voucher_num=document.getElementById("voucher_no").innerHTML;
+    var voucher_date=document.getElementById("date_span_s").innerHTML;
+    var acc_name=document.getElementById("purchase_input").value;
+    var item_des=document.getElementsByClassName("item_input");
+    for(let i=0;i<item_des.length;i++){
+        // store_item.push(item_des[i].value);
+        store_item[i]=item_des[i].value;
+    }
+    var item_qty=document.getElementsByClassName("qty_input");
+    for(let i=0;i<item_qty.length;i++){
+        // store_qty.push(item_qty[i].value);
+        store_qty[i]=item_qty[i].value;
+    }
+    var item_rate=document.getElementsByClassName("rate_input");
+    for(let i=0;i<item_rate.length;i++){
+        // store_rate.push(item_rate[i].value);
+        store_rate[i]=item_rate[i].value;
+    }
+    var item_sales_price=document.getElementsByClassName("sp_input");
+    for(let i=0;i<item_sales_price.length;i++){
+        // store_sales_price.push(item_sales_price[i].value);
+        store_sales_price[i]=item_sales_price[i].value;
+    }
+    var item_per=document.getElementsByClassName("per_input");
+    for(let i=0;i<item_per.length;i++){
+        // store_per.push(item_per[i].value);
+        store_per[i]=item_per[i].value;
+    }
+    var item_amt=document.getElementsByClassName("amt_input");
+    for(let i=0;i<item_amt.length;i++){
+        // store_amt.push(item_amt[i].value);
+        store_amt[i]=item_amt[i].value;
+    }
+    var supp_name=document.getElementById("supp_name_inpt").value;
+    var supp_ph_no=document.getElementById("supp_no_inpt").value;
+    var supp_address=document.getElementById("supp_address").value;
+    var tax_value=document.getElementById("tax_value");
+    var taxes=tax_value.getElementsByTagName("p");
+    for(let i=0;i<taxes.length;i++){
+        // store_tax.push(tax_value[i]);
+        store_tax[i]=taxes[i].innerHTML;
+    }
+    var total=document.querySelector("#total_cal").innerHTML;
+    var paid=document.querySelector("#paid_input").value;
+    var dues=document.querySelector("#dues_cal").innerHTML;
+    var sub_total=document.querySelector("#sub_total_amt").innerHTML;
+    var object={
+        voucher_num:voucher_num,
+        voucher_date:voucher_date,
+        acc_name:acc_name,
+        store_item:store_item,
+        store_qty:store_qty,
+        store_rate:store_rate,
+        store_sales_price:store_sales_price,
+        store_per:store_per,
+        store_amt:store_amt,
+        sub_total:sub_total,
+        tax:store_tax,
+        supp_name:supp_name,
+        supp_ph_no:supp_ph_no,
+        supp_address:supp_address,
+        total:total,
+        paid:paid,
+        dues:dues
+    }
+    var purchase_data=JSON.stringify(object);
+    localStorage.setItem("purchase_voucher_"+voucher_num,purchase_data);
+}
+
+const store_now=()=>{
+    document.getElementById("save_btn").onclick=()=>{
+        store_voucher();
+    }
+}
+store_now();
