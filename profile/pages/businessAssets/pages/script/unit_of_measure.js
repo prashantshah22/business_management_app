@@ -27,7 +27,7 @@ function unit_of_measurement() {
                 if (!symbol.value.trim() || !formal_name.value.trim()) {
                     return;
                 }
-                localStorage.setItem("unit_measurement_" + symbol.value, unit_details);
+                localStorage.setItem("unit_measure_" + symbol.value, unit_details);
             }
         }, 500)
     }
@@ -47,7 +47,7 @@ const show_edit_measurement = () => {
         keys.sort();
         for (let i = 0; i < keys.length; i++) {
             var key = keys[i];
-            if (key.match("unit_measurement_") != null) {
+            if (key.match("unit_measure_") != null) {
                 var key_data = localStorage.getItem(key);
                 var key_details = JSON.parse(key_data);
                 var options = document.createElement("option");
@@ -56,7 +56,7 @@ const show_edit_measurement = () => {
             }
         }
         measure.addEventListener("change",()=>{
-            var data=localStorage.getItem("unit_measurement_"+measure.value);
+            var data=localStorage.getItem("unit_measure_"+measure.value);
             var details=JSON.parse(data);
             document.getElementById("measure_click").click();
             var inputa=document.getElementById("symbol");
@@ -75,7 +75,7 @@ const show_edit_measurement = () => {
                     localStorage.setItem("unit_measure_"+inputa.value,update);
                 }
                 else{
-                    localStorage.removeItem("unit_measurement_"+store);
+                    localStorage.removeItem("unit_measure_"+store);
                     var object={
                         symbol:inputa.value,
                         formal_name:document.getElementById("fullname").value
@@ -92,8 +92,6 @@ const show_edit_measurement = () => {
 }
 
 show_edit_measurement();
-
-
 const delete_measurement = () => {
     var measure = document.getElementById("delete_meaure");
     measure.onclick = () => {
@@ -107,7 +105,7 @@ const delete_measurement = () => {
         keys.sort();
         for (let i = 0; i < keys.length; i++) {
             var key = keys[i];
-            if (key.match("unit_measurement_") != null) {
+            if (key.match("unit_measure_") != null) {
                 var key_data = localStorage.getItem(key);
                 var key_details = JSON.parse(key_data);
                 var options = document.createElement("option");
@@ -116,10 +114,16 @@ const delete_measurement = () => {
             }
         }
          measure.addEventListener("change",()=>{
-            localStorage.removeItem("unit_measurement_"+measure.value);
+            localStorage.removeItem("unit_measure_"+measure.value);
         })
     }
 }
 
-
 delete_measurement();
+
+window.onload=()=>{
+    if (window.top === window.self) {
+        
+        window.location.href = '../../../../../index.html'; // Replace with your main page URL
+    }
+}

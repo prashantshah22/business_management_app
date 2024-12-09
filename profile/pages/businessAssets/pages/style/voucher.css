@@ -3,3 +3,189 @@
     margin: 0;
     box-sizing: border-box;
 }
+#webpage{
+    padding:10px;
+}
+#voucher_page{
+    width:60%;
+    height:100px;
+    border:15px solid blue;
+    border-bottom: none;
+    margin:0 auto;
+    background-color: white;
+}
+#tabs{
+    border:50px solid transparent;
+    border-bottom: none;
+    width:290px;
+    height:60px;
+    float: left;
+    color: black;
+    position: relative;
+    background: inherit;
+}
+#tabs p{
+    position: absolute;
+    top:-40px;
+    left:10px;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+}
+#tabs:hover{
+    border:50px solid transparent;
+    border-top:50px solid blue;
+    border-bottom: none;
+    color: white;
+}
+#tab_content{
+    width:80%;
+    min-height:550px;
+    max-height: auto;
+    float: left;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-top:15px solid blue;
+    box-shadow: 0 0 5px #aaa;
+    position: relative;
+    top:-15px;
+    z-index: -1;
+    padding: 2%;
+}
+#tab_content>*{
+    display: none;
+}
+#tabs.active{
+    border:50px solid transparent;
+    border-top:50px solid blue;
+    border-bottom: none;
+    color:white;
+}
+table,td,th,tr{
+    padding: 0;
+    margin: 0;
+}
+td,th,tr{
+    border:1px solid black;
+}
+.style{
+    background-color: black;
+    color: white;
+}
+#ipt_table{
+    margin-bottom: 20px;
+}
+#ipt_table td{
+    padding-left:5px;
+    height:30px;
+}
+
+#info_tr>*{
+    background-color: black;
+    color: white;
+    height:35px;
+}
+
+#info_tr td{
+    padding-left: 10px;
+}
+#table_item tr{
+    height:30px;
+}
+#add_btn{
+    margin-top: 20px;
+    width:100px;
+    height: 40px;
+    background-color: white;
+    border:none;
+    color:black;
+    box-shadow: 0 0 5px black;
+    font-weight: 700;
+}
+#add_btn:active{
+    background-color: #aaa;
+}
+#purchase_input{
+    width:100%;
+    height:100%;   
+}
+#purchase_input:focus{
+    outline: none;
+}
+#purchase_hint{
+    width:200px;
+    min-height:100px;
+    max-height:200px;
+    overflow-y: scroll;
+    box-shadow: 0 0 5px grey;
+    border:1px solid #ddd;
+    background: white;
+    position: absolute;
+    top:30px;
+    left:0;
+    display: none;
+
+}
+#item_input,#amt_input,#rate_input,#qty_input,#sp_input{
+    width: 100%;
+    height: 30px;
+    padding: 2px;
+}
+#del_icon{
+    font-size: 20px;
+    cursor: pointer;
+}
+#per_input{
+    width: 100%;
+    border:none;
+    height: 30px;
+    padding-left: 10px;
+}
+input:focus{
+    outline: none;
+}
+#tax_fieldset{
+    border:4px solid black;
+    height: 200px;
+    width:45%;
+    margin-left: 50%;
+}
+#paid_input_td{
+    height:100%;
+}
+#paid_input_td input{
+    height:100%;
+    width: 100%;
+}
+#tax_legend{
+   margin-left: 20px;
+   font-size: 20px;
+   font-weight: 900;
+}
+#tax_form{
+    width:100%;
+    padding: 10px;
+}
+#tax_input{
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+}
+#tax_per{
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+#tax_submit{
+    width: 100%;
+    height:40px;
+    background-color: yellow;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+#paid_input_td{
+    padding: 0;
+}

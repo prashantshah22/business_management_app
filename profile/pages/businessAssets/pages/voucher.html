@@ -4,9 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/voucher.css">
+    <link rel="stylesheet" href="../../../../style/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="script/voucher.js" defer></script>
+    <script src="script/purchase_voucher.js" defer></script>
     <title>Voucher</title>
 </head>
 <body>
- 
+<div id="webpage">
+    <div id="voucher_page">
+        <button id="tabs" name="purchase">
+            <p>Purchase voucher</p>
+        </button>
+        <button id="tabs" name="sales">
+            <p>Sales voucher</p>
+        </button>
+     </div>
+     <div id="tab_content">
+        <div id="purchase" class="open">
+            <table width="100%" id="ipt_table">
+                <tr>
+                    <td width="15%" class="style">Purchase No:</td>
+                    <td width="55%"></td>
+                    <td width="15%" class="style">Date</td>
+                    <td width="15%"></td>
+                </tr>
+                <tr>
+                    <td width="15%" class="style">Party Account Name</td>
+                    <td width="55%" style="position: relative; padding: 0;">
+                        <input type="text" id="purchase_input" autocomplete="off">
+                        <div id="purchase_hint"></div>
+                    </td>
+                    <td width="15%" class="style">Current Balance</td>
+                    <td width="15%"></td>
+                </tr>
+            </table>
+            <table width="100%" id="table_item">
+                <tr id="info_tr">
+                    <td width="25%">Item</td>
+                    <td width="15%">Qty</td>
+                    <td width="10%">Rate</td>
+                    <td width="10%">Sales Price</td>
+                    <td width="8%">Per</td>
+                    <td width="10%">Amount</td>
+                    <td width="5%">Delete</td>
+                </tr>
+            </table>
+            <button id="add_btn">Add item</button>
+            <table width="100%" height="200px" style="margin-top: 20px;">
+                <tr>
+                    <td rowspan="5" width="60%">
+                        <fieldset id="tax_fieldset" >
+                            <legend id="tax_legend">Tax setup</legend>
+                            <form action="" id="tax_form">
+                                <input type="text" id="tax_input" required placeholder="Tax Name" autocomplete="off">
+                                <input type="text" id="tax_per" required placeholder="2%" autocomplete="off">
+                                <input type="submit" value="Set" id="tax_submit">
+                            </form>
+                        </fieldset>
+                    </td>
+                    <td width="20%" style="padding-right: 10px; font-weight: 900; font-size: 20px;" align="right">Sub total </td>
+                    <td width="20%" style="padding-left: 10px; font-weight: 900; font-size: 20px;" align="left" id="sub_total"></td>
+                </tr>
+                <tr>
+                    <td width="20%" style="padding-right: 10px; font-weight: 900; font-size: 20px;" align="right" id="tax_name"></td>
+                    <td width="20%" style="padding-left: 10px; font-weight: 900; font-size: 20px;" align="left" id="tax_value"></td>
+                </tr>
+                <tr>
+                    <td width="20%" style="padding-right: 10px; font-weight: 900; font-size: 20px;" align="right">Total</td>
+                    <td width="20%" style="padding-left: 10px; font-weight: 900; font-size: 20px;" align="left" id="total_value"></td>
+                </tr>
+                <tr>
+                    <td width="20%" style="padding-right: 10px; font-weight: 900; font-size: 20px;" align="right">Paid</td>
+                    <td width="20%"  id="paid_input_td"><input type="number" id="paid_input" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td width="20%" style="padding-right: 10px; font-weight: 900; font-size: 20px;" align="right">Balance Dues</td>
+                    <td width="20%" style="padding-left: 10px; font-weight: 900; font-size: 20px;" align="left" id="dues"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="sales" class="open">
+            welcome to sales
+        </div>
+     </div>
+</div>
 </body>
 </html>
