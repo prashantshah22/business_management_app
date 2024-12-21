@@ -1,6 +1,5 @@
 
-
-const display_purchase_acc = () => {
+function display_purchase_acc() {
     var input = document.getElementById("purchase_input");
     var hint = document.getElementById("purchase_hint");
     input.onclick = (e) => {
@@ -64,7 +63,7 @@ const display_purchase_acc = () => {
 display_purchase_acc();
 
 // add item
-const add_item=()=>{
+function add_item(){
     var table_item=document.getElementById("table_item");
     document.getElementById("purchase_hint").style.display="none";
     var tr=document.createElement("tr");
@@ -212,7 +211,7 @@ function call_add_item(){
 }
 call_add_item();
 
-const calculate_sub_total=()=>{
+function calculate_sub_total(){
     var prev_amt=0;
     document.getElementById("sub_total").innerHTML="";
     var amt=document.getElementsByClassName("amt_input");
@@ -223,7 +222,7 @@ const calculate_sub_total=()=>{
 }
 
 
-const set_Tax=()=>{
+function set_Tax(){
     var tax_name=document.getElementById("tax_input");
     var tax_per=document.getElementById("tax_per");
     var tax_submit=document.getElementById("tax_form");
@@ -267,7 +266,7 @@ const set_Tax=()=>{
 }
 set_Tax();
 
-const read_tax_ls=()=>{
+function read_tax_ls(){
     var keys=[];
     document.getElementById("tax_name").innerHTML="";
     for(let i=0;i<localStorage.length;i++){
@@ -298,7 +297,7 @@ read_tax_ls();
 // }
 
 
-const calculate_tax = () => {
+function calculate_tax(){
     var sub_total_amt_element = document.getElementById("sub_total_amt");
     if (sub_total_amt_element && sub_total_amt_element.innerHTML.trim() !== "") {
         var sub_total_amt = Number(sub_total_amt_element.innerHTML);
@@ -314,7 +313,7 @@ const calculate_tax = () => {
 };
 
 
-const calculate_total=()=>{
+function calculate_total(){
     var sub_total_amt_element = document.getElementById("sub_total_amt");
     if (sub_total_amt_element && sub_total_amt_element.innerHTML.trim() !== ""){
     document.getElementById("total_value").innerHTML=" ";
@@ -338,7 +337,7 @@ const calculate_total=()=>{
 }
 
 
-const paid=()=>{
+function paid(){
     var paid =document.getElementById("paid_input");
     paid.oninput=function (){
         var total=Number(document.getElementById("total_cal").innerHTML);
@@ -349,7 +348,7 @@ const paid=()=>{
 
 
 //arrow key functionality to select purchase account name
-const arrow_fn=()=>{
+function arrow_fn(){
     var input=document.getElementById("purchase_input");
     var hint_hover=document.getElementsByClassName("hint_hover");
     sessionStorage.removeItem("count");
@@ -426,7 +425,7 @@ const arrow_fn=()=>{
     }
 }
 arrow_fn();
-const show_date=()=>{
+function show_date(){
     var date=new Date();
     var date_td= document.getElementById("date_show");
     date_td.innerHTML=` <span id="date_span"><strong id="date_span_s">${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}</strong></span>`;
@@ -447,7 +446,30 @@ const show_date=()=>{
 }
 show_date();
 
-const store_voucher=()=>{
+function show_voucher_no(){
+    var voucher_no=document.querySelector("#voucher_no");
+    var keys=[];
+    for (let i=0;i<localStorage.length;i++){
+        keys.push(localStorage.key(i));
+    }
+    keys.sort();
+    var large_no=0;
+    for(let i=0;i<keys.length;i++){
+        var allkeys=keys[i];
+        if(allkeys.match("purchase_voucher_")){
+            var split_led=allkeys.split("_");
+            // var num=Number(allkeys.replace("purchase_voucher_","")); 
+        //    voucher_no.innerHTML+=Number(split_led[2])+1;
+        if(parseInt(split_led[2])>large_no){
+            large_no=parseInt(split_led[2])+1;
+        }
+        }
+    }
+    large_no>0?voucher_no.innerHTML=large_no:voucher_no.innerHTML=1;
+    // voucher_no.innerHTML=large_no;
+}
+show_voucher_no();
+function store_voucher(){
     var store_item=[],store_qty=[],store_rate=[],store_sales_price=[],store_per=[],store_amt=[],store_tax=[];
     var voucher_num=document.getElementById("voucher_no").innerHTML;
     var voucher_date=document.getElementById("date_span_s").innerHTML;
@@ -518,9 +540,10 @@ const store_voucher=()=>{
     localStorage.setItem("purchase_voucher_"+voucher_num,purchase_data);
 }
 
-const store_now=()=>{
+function store_now(){
     document.getElementById("save_btn").onclick=()=>{
         store_voucher();
+        location.reload();
     }
 }
 store_now();
